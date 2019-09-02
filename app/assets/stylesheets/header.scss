@@ -1,0 +1,29 @@
+// ヘッダー
+header{
+    width: 100%;
+    height: 70px;
+    background-color: rgba(127, 255, 212, .6);
+    color: white;
+    position: fixed;
+    z-index: 1000;
+}
+// ヘッダー内のリンクレイアウト
+.nav{
+    float: right;
+}
+.header-link{
+    float: left;
+    width: 120px;
+    line-height: 70px;
+    list-style: none;
+    padding: 0 30px;
+    color: #fff;
+    // マウスカーソルで色変
+    :hover{
+        color: #fff;
+    }
+}
+// ロゴ
+.logo{
+    margin-left: 10px;
+}
