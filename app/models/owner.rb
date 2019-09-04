@@ -4,6 +4,7 @@ class Owner < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :restaurants
+# アソシエーション
+has_many :restaurants
 
 end

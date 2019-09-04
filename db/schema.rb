@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_042449) do
+ActiveRecord::Schema.define(version: 2019_09_03_131447) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,8 +67,10 @@ ActiveRecord::Schema.define(version: 2019_09_02_042449) do
     t.integer "restaurant_id", null: false
     t.string "restaurant_status", default: "", null: false
     t.string "usage_fee", default: "", null: false
-    t.string "usage_time", default: "", null: false
+    t.string "use_start_time", default: "", null: false
+    t.string "use_end_time", default: "", null: false
     t.string "usage_number", default: "", null: false
+    t.datetime "usage_day", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,7 +81,8 @@ ActiveRecord::Schema.define(version: 2019_09_02_042449) do
     t.string "restaurant_address", default: "", null: false
     t.string "facility", default: "", null: false
     t.string "scheduled_usage_fee", default: "", null: false
-    t.string "available_usage_time", default: "", null: false
+    t.string "available_start_time", default: "", null: false
+    t.string "available_end_time", default: "", null: false
     t.string "seat_number", default: "", null: false
     t.string "usage_status", default: "", null: false
     t.string "prefecture", default: "", null: false

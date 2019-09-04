@@ -5,16 +5,15 @@
         <section id="visual-area">
             <div class="container">
                 <div class="row">
-                    <!-- スキッパー画像 -->
-                    <div id="theTarget">
-                        <div style="background-image: url(images/image1.jpg)"></div>
-                        <div style="background-image: url(images/image2.jpg)"></div>
-                        <div style="background-image: url(images/image3.jpg)"></div>
-                        <div style="background-image: url(images/image4.jpg)"></div>
+                    <!-- メイン画像 -->
+                    <div class="main-visual">
+                        <!-- メインロゴ画像 -->
+                        <div class="main-logo">
+                            <%= image_tag "space-share.jpg", size:'200x200' %>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- ロゴ画像 -->
         </section>
 
 
@@ -25,13 +24,14 @@
                     <h1 class="concept-title text-center">Concept</h1>
                     <div class="concept-inner">
                         <!-- Concept画像 -->
-                        <figure class="concept-image col-xs-6">
+                        <figure class="concept-image col-xs-6 text-center">
                             <%= image_tag "partnership.png", size:'150x150'%>
                         </figure>
                         <!-- Concept説明文 -->
                         <p class="concept-text col-xs-6">
                             <strong>必要としている人にスペースを提供</strong></br>
-                            Space Shareでは、利用スペースを必要とするユーザーと空きスペース有効活用したいオーナーをつなぐサービスです。</br>
+                            Space Shareでは、利用スペースを必要とするユーザーと</br>
+                            空きスペース有効活用したいオーナーをつなぐサービスです。</br>
                             夜間営業が多く日中帯は空いていることが多いスペースをうまく活用したい！</br>
                             そんなオーナーと会議や勉強会で使用したいユーザーをつなぐサービスです。
                         </p>
@@ -47,7 +47,7 @@
                     <h1 class="service-title text-center">Service</h1>
                     <div class="service-inner">
                         <!-- Service画像 -->
-                        <figure class="service-image col-xs-6">
+                        <figure class="service-image col-xs-6 text-center">
                             <%= image_tag "homepage (1).png", size:'150x150' %>
                         </figure>
                         <!-- Service説明文 -->

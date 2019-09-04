@@ -6,8 +6,10 @@ class CreateReservations < ActiveRecord::Migration[5.2]
       t.integer :restaurant_id, null: false, default: ""
       t.string :restaurant_status, null: false, default: ""
       t.string :usage_fee, null: false, default: ""
-      t.string :usage_time, null: false, default: ""
+      t.string :use_start_time, null: false, default: ""
+      t.string :use_end_time, null: false, default: ""
       t.string :usage_number, null: false, default: ""
+      t.timestamp :usage_day, null: false, default: ""
 
       t.timestamps
     end

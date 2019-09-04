@@ -8,16 +8,18 @@
         <nav class="pull-right">
             <ul>
                 <li class="header-link">
-                    <a href="concept">Concept</a>
+                    <a href="#concept-area">Concept</a>
                 </li>
                 <li class="header-link">
-                    <a href="service">Service</a>
+                    <a href="#service-area">Service</a>
                 </li>
                 <li class="header-link">
-                    <a href="user">User</a>
+                    <!-- 飲食店一覧画面に遷移する -->
+                    <%= link_to "User", restaurants_path %>
                 </li>
                 <li class="header-link">
-                    <a href="owner">Owner</a>
+                    <!-- オーナーログイン画面に遷移する -->
+                    <%= link_to "Owner", new_owner_registration_path %>
                 </li>
             </ul>
         </nav>
