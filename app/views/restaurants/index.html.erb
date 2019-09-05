@@ -1,38 +1,78 @@
-飲食店一覧画面(検索結果画面)
-
 <div class="container">
     <div class="row">
 
-    <!-- 検索フォーム -->
+    <!-- 検索フィールド -->
     <div class="search-box">
-        <div class="row">
-            <!-- キーワード -->
-            <!-- 都道府県 -->
-            <!-- 利用日検索 -->
-        </div>
+        <%# 店舗-検索 %>
+        <%= search_form_for @search, url: restaurants_path do |f| %>
+            <div class="search-btn">
+                <%= f.submit "検索" %>
+            </div>
+            <div class="search-form">
+                <%= f.search_field :restaurant_name_or_facility_or_seat_number_cont_any, placeholder: "店舗名で検索" %>
+            </div>
+        <% end %>
+
+        <%# 都道府県-検索 %>
+        <%= search_form_for @search, url: restaurants_path do |f| %>
+            <div class="search-btn">
+                <%= f.submit "検索" %>
+            </div>
+            <div class="search-form">
+                <%= f.search_field :restaurant_address_or_prefecture_cont_any, placeholder: "都道府県で検索" %>
+            </div>
+        <% end %>
     </div>
 
 
     <!-- 検索対象一覧 -->
+    <% if @results.any? %>
+    <% @results.each do |results| %>
     <div class="col-xs-12 col-sm-4">
         <div class="restaurant-box">
             <div class="row">
                 <div class="col-xs-6 col-sm-12">
                     <div class="image-box">
-                        <!-- attachment 店舗画像 -->
+                        <!-- Active-Strage 店舗画像  -->
+                        <%= results.images.each do |images| %>
+                            <%= image_tag images %>
+                        <% end %>
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-12">
                     <!-- 店舗名 -->
+                    <p class="style">
+                        <%= results.restaurant_name %>
+                    </p>
                     <!-- アクセス -->
-                    <!-- 利用日 -->
-                    <!-- 利用時間 -->
+                    <p>
+                        <%= results.restaurant_address %>
+                    </p>
+                    <!-- 利用可能時間 -->
+                    <p>
+                        <%= results.available_start_time %>〜<%= results.available_end_time %>
+                    </p>
                     <!-- 利用料金 -->
+                    <p style="color:red;">
+                        <%= results.scheduled_usage_fee %>
+                    </p>
                 </div>
             </div>
         </div>
         <!-- 店舗詳細リンク -->
+        <%= link_to ">>店舗詳細", restaurant_path(results) %>
     </div>
+    <% end %><!-- resultsのEND -->
+
+
+    <!-- ページネイション -->
+    <div class="col-xs-12 col-sm-12 text-center"><%= paginate @results %></div>
+
+    <!-- result.anyにヒットしなかった場合 -->
+    <% else %>
+    <p>該当する店舗が見つかりませんでした。</p>
+    <% end %><%# results.any? %>
+
 
     </div><!-- row -->
 </div><!-- container -->

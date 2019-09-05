@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
     def new
+        @review = Review.new(review_params)
 
     end
 
@@ -23,5 +24,13 @@ class ReviewsController < ApplicationController
     def edit
 
     end
+
+    # ストロングパラメータ
+    private
+    def review_params
+        require(:review).permit(:review_name, :comment, :restaurant_id)
+    end
+
+
 
 end

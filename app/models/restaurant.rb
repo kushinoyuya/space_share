@@ -3,6 +3,7 @@ class Restaurant < ApplicationRecord
     # アソシエーション
     has_many :likes
     has_many :reviews
+    has_many :reservations
     belongs_to :owner, optional: true
 
     # 画像ID（image_id）はActive_storageを使用
