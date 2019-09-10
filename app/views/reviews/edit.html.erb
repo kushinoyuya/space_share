@@ -1,0 +1,25 @@
+<%= render "layouts/setting" %>
+<div class="container">
+    <div class="row">
+        <h1 class="review-title text-center">Review</h1>
+        <div class="review-box">
+        <%# レビュー投稿form文 %>
+        <%= form_for @review do |review| %>
+            <%# レビュー投稿者の名前 %>
+            <div class="review-name">
+                <p>Nick Name</p>
+                <%= review.text_field :review_name, class:"form-control" ,placeholder:"ニックネームを入力" %>
+            </div>
+            <%# レビュー投稿内容 %>
+            <div class="review-comment">
+                <p>comment</p>
+                <%= review.text_area :comment,class:"form-control",placeholder:"レビューを入力（投稿は商品につき１件まで可能です。）" %>
+            </div>
+            <p></p>
+            <%# レビュー投稿ボタン %>
+            <%= review.submit("レビューする",class: 'btn btn-primary center-block ') %>
+        <% end %>
+        <%# レビュー投稿END文 %>
+        </div>
+    </div>
+</div>

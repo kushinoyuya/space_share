@@ -1,0 +1,73 @@
+<%= render "layouts/setting" %>
+
+
+<div class="container">
+    <div class="row">
+        <h1 class="reservation-registration-title text-center">予約登録画面</h1>
+        <div class="list">
+            <li>ログイン・新規登録</li>
+            <li>予約設定</li>
+            <li>予約完了</li>
+        </div>
+        <div class="box text-center">
+            <%= form_with(model: @reservation, local:true) do |f| %>
+        </div>
+
+        <%# 店舗名 %>
+        <div class="row form-box">
+            <div class="col-sm-2">
+                <label for="">店舗名</label>
+            </div>
+            <div class="col-sm-10">
+                <%= @reservation.restaurant.restaurant_name %>
+            </div>
+        </div>
+        <p></p><%# 間隔調整 %>
+
+        <%# 利用日 %>
+        <div class="row">
+            <div class="col-xs-2">
+                <label for="">利用日</label>
+            </div>
+            <div class="col-sm-10">
+                <%= f.select :usage_day, options_for_select((1..31).to_a), {}, class: "form-control", :style=>"width:50px;display:inline-block;margin-top:20px;" %>
+            </div>
+        </div>
+        <p></p><%# 間隔調整 %>
+
+        <%# 利用時間 %>
+        <div class="row">
+            <div class="col-xs-2">
+                <label for="">利用時間</label>
+            </div>
+            <div class="col-sm-10">
+                <%# 開始時間（hour） %>
+                <%= f.select :use_start_time_hour, options_for_select(@reservation_use_start_time_hour_hour) %>：
+                <%# 開始時間（min） %>
+                <%= f.select :use_start_time_min, options_for_select(@reservation_use_start_time_hour_min) %>〜
+                <%# 終了時間（hour） %>
+                <%= f.select :use_end_time_hour, options_for_select(@reservation_use_end_time_hour) %>：
+                <%# 終了時間（min） %>
+                <%= f.select :use_end_time_min, options_for_select(@reservation_use_end_time_min) %>
+            </div>
+        </div>
+        <p></p><%# 間隔調整 %>
+
+        <%# 利用人数 %>
+        <h3>利用人数</h3>
+        <label style="margin-right:70px;">
+            <%= f.select :usage_number, options_for_select((1..20).to_a), {}, class: "form-control", :style=>"width:50px;display:inline-block;margin-top:20px;" %>
+        </label>
+        <%# 支払方法 %>
+        <h3>お支払方法</h3>
+        <p>銀行振込・代引き・クレジットカードを選択できます。</p>
+        <div class="box-radius">
+            <%# <label style="margin-right:70px;"><%= f.radio_button :payment, '代金引換',:checked=>"checked" %>代金引換</label>
+            <%# <label><%= f.radio_button :payment, '銀行振込' %>銀行振込</label> %>
+            <%# <label><%= f.radio_button :payment, 'クレジットカード' %>クレジットカード</label> %>
+            <%# pay.jp %>
+        </div>
+        <%# 予約確定ボタン %>
+        <% end %>
+    </div>
+</div>

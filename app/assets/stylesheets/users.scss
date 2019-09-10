@@ -1,3 +1,49 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.my-profile-title{
+    padding-top: 10px;
+    font-family: "Raleway" sans-serif;
+    font-size: 32px;
+    color: black;
+}
+.my-profile-title::after{
+    content: "";
+    display: block;
+    width: 95px;
+    height: 3px;
+    background-color: #20b2aa;
+    margin: 8px auto 0 auto;
+}
+
+.my-likes-title{
+    padding-top: 10px;
+    font-family: "Raleway" sans-serif;
+    font-size: 32px;
+    color: black;
+}
+.my-likes-title::after{
+    content: "";
+    display: block;
+    width: 95px;
+    height: 3px;
+    background-color: #20b2aa;
+    margin: 8px auto 0 auto;
+}
+
+.my-reservation-title{
+    padding-top: 10px;
+    font-family: "Raleway" sans-serif;
+    font-size: 32px;
+    color: black;
+}
+.my-reservation-title::after{
+    content: "";
+    display: block;
+    width: 95px;
+    height: 3px;
+    background-color: #20b2aa;
+    margin: 8px auto 0 auto;
+}

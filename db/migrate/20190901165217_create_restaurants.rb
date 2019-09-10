@@ -13,6 +13,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       # 画像ID（image_id）はActive_storageを使用
       t.string :usage_status, null: false, default: ""
       t.string :prefecture, null: false, default: ""
+      t.string :rest_day,  null: false, default: ""
 
       t.timestamps
     end

@@ -80,9 +80,13 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass','~>3.3.6'
 # jqueryを扱えるようになる
 gem 'jquery-rails'
+# スライドショー
+gem "jquery-slick-rails"
 # 検索機能
 gem 'ransack'
-# クレジット機能（今回は未使用）
+# クレジット機能
 gem 'payjp'
 # kaminariを使用したページネーションにBootstrapデザインを適用
 gem 'kaminari-bootstrap', '~> 3.0.1'
+# 定休日複数選択
+gem "select2-rails"

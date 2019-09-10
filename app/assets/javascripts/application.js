@@ -11,12 +11,16 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery.slick
 //= require activestorage
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
+//= require select2
 //= require_tree .
-//= require_tree ../../../vendor/assets/javascripts/.
+
+
+
 
 
 
@@ -25,19 +29,56 @@
 $(document).on("turbolinks:load",function(){
     $("a[href^='#']").on('click', function() {
         let href = $(this).attr('href');
-
         let offset = $(href).offset();
-
         if(typeof offset === 'undefined') {
             return false;
         }
-
         let top = offset.top;
-
         $('html, body').animate({
             scrollTop: top
         }, 1000);
-
         return false;
     });
-  });
+});
+
+// トップ画面スライドショー
+$(document).ready(function(){
+    $('#theTarget').slick({
+    dots: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    });
+});
+
+// 飲食店一覧画面スライドショー
+$(document).ready(function(){
+    $('.restaurant-image').slick({
+        dots: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    });
+});
+
+$(document).ready(function(){
+    $('.restaurant-image-show').slick({
+        dots: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    });
+});
+
+// 定休日複数選択
+$(document).ready(function() {
+$('.mySelect2').select2({
+    maximumSelectionLength: 3,
+    width: 300,
+    placeholder: 'This is my placeholder',
+    allowClear: true
+});
+});

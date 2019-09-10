@@ -1,30 +1,103 @@
 <header class="container-fluid">
     <div class="row">
+
+        <!-- logoの表示 -->
         <div class="logo pull-left">
-            <!-- logoの表示 -->
             <%= image_tag "space-share.jpg", size:'70x70' %>
         </div>
 
-        <nav class="pull-right">
+        <%# Userログインページ %>
+        <div class="login-status pull-right">
+            <% if user_signed_in? %>
+                <!-- 飲食店一覧画面に遷移する -->
+                <li class="nav-list">
+                    <div class="header-link">
+                        <%= link_to "Index", restaurants_path, :style=>"color:white;", class: 'button' %>
+                    </div>
+                </li>
+                <!-- ユーザー詳細画面に遷移する -->
+                <li class="nav-list">
+                    <div class="header-link">
+                        <%= link_to "My page", user_path(current_user), :style=>"color:white;", class: 'button' %>
+                    </div>
+                </li>
+                <span class="glyphicon glyphicon-user"></span>
+                <%= link_to user_path(current_user), :style=>"color:#982031;" do %>
+                <%= current_user.last_name %>
+                <% end %>さん<br>
+                ログイン中<br>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </div>
+
+        <%# Ownerログインページ %>
+        <div class="login-status pull-right">
+            <% elsif owner_signed_in? %>
+                <!-- 予約一覧画面画面に遷移する -->
+                <li class="nav-list">
+                    <div class="header-link">
+                        <%= link_to "reservation", reservations_path, :style=>"color:white;", class: 'button' %>
+                    </div>
+                </li>
+                <!-- オーナー詳細画面に遷移する -->
+                <li class="nav-list">
+                    <div class="header-link">
+                        <%= link_to "My page", owner_path(current_owner), :style=>"color:white;", class: 'button' %>
+                    </div>
+                </li>
+                <span class="glyphicon glyphicon-user"></span>
+                <%= link_to owner_path(current_owner), :style=>"color:#982031;" do %>
+                <%= current_owner.last_name %>
+                <% end %>さん<br>
+                ログイン中<br>
+                <%= link_to "ログアウト", destroy_owner_session_path, method: :delete %>
+        </div>
+
+
+        <%# デフォルトページ %>
+        <% else %>
+        <% if current_page?(root_path) %>
+        <nav class="header-nav">
             <ul>
-                <li class="header-link">
-                    <a href="#concept-area">Concept</a>
+                <li class="nav-list">
+                    <div class="header-link">
+                        <a href="#concept-area" class="button">Concept</a>
+                    </div>
                 </li>
-                <li class="header-link">
-                    <a href="#service-area">Service</a>
+                <li class="nav-list">
+                    <div class="header-link">
+                        <a href="#service-area" class="button">Service</a>
+                    </div>
                 </li>
-                <li class="header-link">
-                    <!-- 飲食店一覧画面に遷移する -->
-                    <%= link_to "User", restaurants_path %>
+        <% end %>
+
+                <li class="nav-list">
+                    <div class="header-link">
+                        <!-- 飲食店一覧画面に遷移する -->
+                        <%= link_to "Index", restaurants_path, :style=>"color:white;", class: 'button' %>
+                    </div>
                 </li>
-                <li class="header-link">
-                    <!-- オーナーログイン画面に遷移する -->
-                    <%= link_to "Owner", new_owner_registration_path %>
+
+
+                <li class="nav-list">
+                    <div class="header-link">
+                        <!-- 飲食店一覧画面に遷移する -->
+                        <% if current_user %>
+                            <%= link_to "User", user_path(current_user.id), :style=>"color:white;", class: 'button' %>
+                        <% else %>
+                            <%= link_to "User", new_user_registration_path, :style=>"color:white;", class: 'button' %>
+                        <% end %>
+                    </div>
+                </li>
+                <li class="nav-list">
+                    <div class="header-link">
+                        <!-- オーナーログイン画面に遷移する -->
+                        <%= link_to "Owner", reservations_path, :style=>"color:white;", class: 'button' %>
+                    </div>
                 </li>
             </ul>
         </nav>
 
-
+        <% end %>
 
 
     </div><!-- row -->

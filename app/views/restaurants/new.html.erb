@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="row">
+    <h1 class="restaurant-registration-title text-center">Restaurant Registration</h1>
+        <%# sidetag部分テンプレートここから %>
+        <div class="col-sm-3">
+            <%# render partial: "layouts/sidetag" %>
+            <%= render partial: "layouts/sidetag" %>
+        </div>
+        <%# sidetag部分テンプレートここまで %>
+
+
+        <div class="col-sm-9">
+            <div class="box text-center">
+                <%= form_with(model: @restaurant, local:true) do |f| %>
+
+                <div class="owner-info">
+                    <%= f.collection_select :owner_id, Owner.all, :id, :last_name, class: "form-control", placeholder: "名前を入力してください" %>
+                </div>
+                <p></p><%# 間隔調整 %>
+
+                <%# 店舗名 %>
+                <div class="row form-box">
+                    <div class="col-sm-2">
+                        <label for="">店舗名</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <%= f.text_field :restaurant_name, class: "form-control", placeholder: "飲食店名を入力してください" %>
+                    </div>
+                </div>
+                <p></p><%# 間隔調整 %>
+
+                <%# 店舗写真 %>
+                <div class="row form-box">
+                    <div class="col-sm-2">
+                        <label for="">店舗写真</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <%= f.file_field :images, multiple: true %>
+                    </div>
+                </div>
+                <p></p><%# 間隔調整 %>
+
+                <%# 利用予定料金 %>
+                <div class="row form-box">
+                    <div class="col-sm-2">
+                        <label for="">利用予定料金</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <%= f.text_field :scheduled_usage_fee, class: "form-control", placeholder: "料金を設定してください" %>
+                    </div>
+                </div>
+                <p></p><%# 間隔調整 %>
+
+                <%# 設備 %>
+                <div class="row for-m-box">
+                    <div class="col-sm-2">
+                        <label for="">設備</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <%= f.text_field :facility, class: "form-control", placeholder: "設備を入力してください" %>
+                    </div>
+                </div>
+                <p></p><%# 間隔調整 %>
+
+                <%# 利用可能時間 %>
+                <div class="row form-box">
+                    <div class="col-sm-2">
+                        <label for="">利用可能時間</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <%# 開始時間（hour） %>
+                        <%= f.select :available_start_time_hour, options_for_select(@restaurant_available_start_time_hour) %>：
+                        <%# 開始時間（min） %>
+                        <%= f.select :available_start_time_min, options_for_select(@restaurant_available_start_time_min) %>〜
+                        <%# 終了時間（hour） %>
+                        <%= f.select :available_end_time_hour, options_for_select(@restaurant_available_end_time_hour) %>：
+                        <%# 終了時間（min） %>
+                        <%= f.select :available_end_time_min, options_for_select(@restaurant_available_end_time_min) %>
+                    </div>
+                </div>
+                <p></p><%# 間隔調整 %>
+
+                <%# 定休日 %>
+                <div class="row form-box">
+                    <div class="col-sm-2">
+                        <label for="">定休日</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <%# ラジオボタン %>
+                        <%# f.check_box_tag :id, restaurant.id, :checked=>"checked" %>
+                        <%= f. :rest_day, options_for_select(@restaurant_available_start_time_min), class:"mySelect2", multiple: true %>
+                    </div>
+                </div>
+                <p></p><%# 間隔調整 %>
+
+                <%# 住所 %>
+                <div class="row form-box">
+                    <div class="col-sm-2">
+                        <label for="">住所</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <%= f.text_field :restaurant_address, class: "form-control", placeholder: "住所を入力してください" %>
+                    </div>
+                </div>
+                <p></p><%# 間隔調整 %>
+
+                <%# 座席数 %>
+                <div class="row form-box">
+                    <div class="col-sm-2">
+                        <label for="">座席数</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <%= f.select :seat_number, options_for_select((1..20).to_a), {}, class: "form-control", :style=>"width:50px;display:inline-block;margin-top:20px;" %>
+                    </div>
+                </div>
+                <p></p><%# 間隔調整 %>
+
+                <%# 登録ボタン %>
+                <div class="row form-box">
+                    <div class="col-sm-12" style="text-align:center";>
+                        <%= f.submit "Update", class: "btn btn-default", :style=>"width: 80px;" %>
+                    </div>
+                </div>
+                <p></p><%# 間隔調整 %>
+
+                <% end %>
+
+            </div><%# box %>
+        </div><%# col-sm-9 %>
+    </div><%# row %>
+</div><%# container %>

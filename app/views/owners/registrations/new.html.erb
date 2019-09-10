@@ -1,45 +1,61 @@
-<body class="sign-up-body">
-  <div class="container-sign-up">
+  <div class="container">
     <div class="row">
-      <div class="col-md-3 col-md-offset-4">
-        <section>
-          <h2 class="text-center">Sign up(オーナー新規登録画面)</h2>
+      <div class="col-md-8 col-md-offset-2">
+            <h2>新規登録(オーナー)</h2>
+              <div class="box">
+               <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
 
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
-              <%# Email %>
-              <div class="field">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-              </div>
+                <div class="row form-group name-form">
+                  <div class="item-form"><%= f.label :氏名 %>
+                  <em>※必須項目</em></div>
+                  <div class="col-md-10 form name-form"><%= f.text_field :last_name, :size=>"25", autofocus: true, class:"form-inline", placeholder:"姓" %>
+                  <%= f.text_field :first_name, :size=>"25", autofocus: true, class:"form-inline", placeholder:"名"%></div>
+                </div>
 
-              <%# password %>
-              <div class="field">
-                <%= f.label :password %>
-                <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %><br />
-                <%= f.password_field :password, autocomplete: "new-password" %>
-              </div>
+                <div class="row form-group">
+                  <div class="item-form"><%= f.label :氏名%><i>(カナ)</i>
+                  <em>※必須項目</em></div>
+                  <div class="col-md-10"><%= f.text_field :last_kana, :size=>"25", autofocus: true, class:"form-inline", placeholder:"セイ" %>
+                  <%= f.text_field :first_kana, :size=>"25", autofocus: true, class:"form-inline", placeholder:"メイ"%></div>
+                </div>
 
-              <%# password確認 %>
-              <div class="field">
-                <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-              </div>
+                <div class="row form-group">
+                  <div class="item-form"><%= f.label :電話番号 %>
+                  <em>※必須項目</em></div>
+                  <div class="col-md-10"><%= f.text_field :phone_number, autofocus: true, class:"form-control", placeholder:"ハイフンなし" %></div>
+                </div>
 
-              <div class="actions">
-                <%= f.submit "Sign up" %>
-              </div>
+                <div class="row form-group">
+                  <div class="item-form"><%= f.label :メールアドレス %>
+                  <em>※必須項目</em></div>
+                  <div class="col-md-10"><%= f.email_field :email, class:"form-control" %></div>
+                </div>
 
+                <div class="row form-group">
+                  <div class="item-form"><%= f.label :パスワード %>
+                  <em>※必須項目</em></div>
+                  <div class="col-md-10"><%= f.password_field :password, class:"form-control", placeholder:"英数字6文字以上" %></div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="item-form"><%= f.label :パスワード再確認用 %>
+                  <em>※必須項目</em></div>
+                  <div class="col-md-10"><%= f.password_field :password_confirmation, class:"form-control", placeholder:"英数字6文字以上" %></div>
+                </div>
+
+                <div class="text-center">
+                  <%= f.submit "会員登録する", class:"btn btn-primary btn-lg" %>
+                </div>
               <% end %>
 
-              <%= render "owners/shared/links" %>
+                <p></p><%# 間隔調整 %>
+                <div class="link text-center">
+                  <%= render "owners/shared/links" %>
+                </div>
 
 
-
-        </section>
-      </div>
+            </div><%# box %>
+      </div><%# col-md-8 col-md-offset-2 %>
     </div><%# row %>
-  </div>
-</body>
+  </div><%# container %>

@@ -65,7 +65,8 @@ Restaurant.create!(
     usage_status: "予約可能",
     prefecture: "千葉",
     created_at: "2019/08/30",
-    updated_at: "2019/08/30"
+    updated_at: "2019/08/30",
+    rest_day: "月"
 )
 
 

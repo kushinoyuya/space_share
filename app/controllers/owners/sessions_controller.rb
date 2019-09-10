@@ -1,6 +1,19 @@
 # frozen_string_literal: true
 
 class Owners::SessionsController < Devise::SessionsController
+
+  # ログイン後予約一覧画面に遷移するpathを設定
+  def after_sign_in_path_for(resource)
+    reservations_path(resource)
+  end
+
+  # ログアウト後オーナーログイン画面へ遷移するpathを設定
+  def after_sign_out_path_for(resource)
+    new_owner_session_path
+  end
+
+
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

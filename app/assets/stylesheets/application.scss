@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_tree ../../../vendor/assets/stylesheets/.
+*= require select2
  *= require_self
  */
 
@@ -19,17 +20,27 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// slickをgemで追加
+@import 'slick';
+@import 'slick-theme';
+
 // Setting
 *{
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
 }
-
 .clearfix::after{
     content: "";
     display: block;
     clear: both;
+}
+
+.wrapper{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 50px;
+    box-sizing: border-box;
 }
 
 // Top画面
@@ -38,32 +49,80 @@
     margin-bottom: 20px;
 }
 
+
+// Setting漏れ（両サイドの微調整）
 .container{
-    width: 100%;
+	background-color: rgba(255,255,255,.93);
+	border-radius: 20px;
+    padding:30px 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid black;
 }
 
 #visual-area{
     width: 100%;
 }
-
+// slick実装
 .main-visual{
     background-image: url(image3.jpg);
     background-size: cover;
     height: 700px;
+    background-position: center;/*背景画像を中央に配置*/
+}
+.main-logo{
+    float: left;
+    left: 40%;
+    top: 30%;
+    position: relative;
+}
+// 飲食店画像表示
+.trim{
+    overflow: hidden;
+    height: 300px;/* トリミングしたい枠の高さ */
+    position: relative;
 }
 
-.main-logo{
-    // margin: 0 auto; // widthを決めて、余白を作って、左右均等
-    text-align: center; // 親要素の中心に来るようにする
-    line-height:700px;
-    align-items: center;
+.main-visual-2{
+    background-image: url(image1.jpg);
+    background-size: cover;
+    height: 700px;
+    background-position: center;/*背景画像を中央に配置*/
+}
+.main-visual-3{
+    background-image: url(image4.jpg);
+    background-size: cover;
+    height: 700px;
+    background-position: center;/*背景画像を中央に配置*/
+}
+.main-visual-inner{
+    width: 100%; /*横幅*/
+	height: 300px; /*高さ*/
+    background-color: rgba(0,0,0,0.5);/*背景色を半透明の黒にする*/
+    margin: 0% auto;
+    padding: 105px;/*上側の内側の余白で垂直方向の位置を調整*/
+
+}
+.mv-title{
+    // padding-top: 200px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 64px;
+    text-align: center;
+    color: #fff;/*文字色を白に変更*/
+}
+.mv-text{
+    // padding-top: 10px;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;/*文字色を白に変更*/
 }
 
 // concept-title
 .concept-title{
-    padding-top: 70px;
+    padding-top: 10px;
     font-family: "Raleway" sans-serif;
     font-size: 32px;
+    color: black;
 }
 .concept-title::after{
     content: "";
@@ -74,16 +133,23 @@
     margin: 8px auto 0 auto;
 }
 .concept-text{
-    padding-top: 30px;
+    padding-top: 10px;
     font-size: 16px;
+    margin-bottom: 100px;
+    background: #efefef;
+    border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
+    padding: 4%;
+    border: 6px solid #333;
+    margin: 0% auto;
 }
 
 
 // service-title
 .service-title{
-    padding-top: 70px;
+    padding-top: 10px;
     font-family: "Raleway" sans-serif;
     font-size: 32px;
+    color: black;
 }
 .service-title::after{
     content: "";
@@ -94,8 +160,14 @@
     margin: 8px auto 0 auto;
 }
 .service-text{
-    padding-top: 30px;
+    padding-top: 10px;
     font-size: 16px;
+    margin-bottom: 100px;
+    border: 6px solid #333;
+    border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
+    padding: 4%;
+    background: #efefef;
+    margin: 0 auto;
 }
 
 
@@ -107,7 +179,28 @@ footer{
     height: 50px;
     line-height: 50px;
     text-align: center;
-    color: #20b2aa;
-    position: relative;
+    color: #333;
     bottom: 0%;
+    width:100%;
+    position: absolute;
+    margin-top:60px;
+}
+
+.setting-header{
+    width: 100%;
+    height: 50px;
+}
+
+// 飲食店画像
+.image-box{
+	background-color: white;
+	display: inline-block;
+	padding: 2px;
+}
+
+body{
+	background-color:black;
+	background-image:url('image6.jpg');
+	background-attachment: fixed;
+	background-size: cover;
 }

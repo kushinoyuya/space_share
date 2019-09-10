@@ -1,19 +1,45 @@
-<div class="container">
+<%= render "layouts/setting" %>
+
+<div class="container-top">
     <div class="row">
 
         <!-- Main-Visual -->
         <section id="visual-area">
             <div class="container">
                 <div class="row">
-                    <!-- メイン画像 -->
-                    <div class="main-visual">
-                        <!-- メインロゴ画像 -->
-                        <div class="main-logo">
-                            <%= image_tag "space-share.jpg", size:'200x200' %>
+
+                <!-- skippr実装 -->
+                    <div id="theTarget">
+                        <!-- メイン画像1 -->
+                        <div class="main-visual">
+                            <!-- メインロゴ画像 -->
+                            <div class="main-logo">
+                                <%= image_tag "space-share.jpg", size:'200x200' %>
+                            </div>
+                        </div>
+                        <!-- メイン画像2 -->
+                        <div class="main-visual-2">
+                            <div class="main-visual-inner">
+                                <h2 class="mv-title">Space Share</h2>
+                                <p class="mv-text">おしゃれなレストランで新しいことしませんか？</p>
+                            </div>
+                        </div>
+                        <!-- メイン画像3 -->
+                        <div class="main-visual-3">
+                            <div class="main-visual-inner">
+                                <h2 class="mv-title">お店の空き時間をうまく使いたい方</h2>
+                                <p class="mv-text">スペースを提供される方はOwnerへクリック</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+
+
+
+
+
+
+                </div><!-- Main-Visual(row) -->
+            </div><!-- Main-Visual(container) -->
         </section>
 
 
@@ -24,11 +50,11 @@
                     <h1 class="concept-title text-center">Concept</h1>
                     <div class="concept-inner">
                         <!-- Concept画像 -->
-                        <figure class="concept-image col-xs-6 text-center">
+                        <figure class="concept-image col-xs-5 text-center">
                             <%= image_tag "partnership.png", size:'150x150'%>
                         </figure>
                         <!-- Concept説明文 -->
-                        <p class="concept-text col-xs-6">
+                        <p class="concept-text col-xs-7">
                             <strong>必要としている人にスペースを提供</strong></br>
                             Space Shareでは、利用スペースを必要とするユーザーと</br>
                             空きスペース有効活用したいオーナーをつなぐサービスです。</br>
@@ -47,11 +73,11 @@
                     <h1 class="service-title text-center">Service</h1>
                     <div class="service-inner">
                         <!-- Service画像 -->
-                        <figure class="service-image col-xs-6 text-center">
+                        <figure class="service-image col-xs-5 text-center">
                             <%= image_tag "homepage (1).png", size:'150x150' %>
                         </figure>
                         <!-- Service説明文 -->
-                        <p class="service-text col-xs-6">
+                        <p class="service-text col-xs-7">
                             1. ユーザーは会議や勉強などで使用する空きスペースをアプリで探します</br>
                             2. 空いているお店の場所を予約で確保します</br>
                             3. 予約の段階で支払方法を選択します</br>

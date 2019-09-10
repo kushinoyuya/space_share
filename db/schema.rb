@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_131447) do
     t.string "seat_number", default: "", null: false
     t.string "usage_status", default: "", null: false
     t.string "prefecture", default: "", null: false
+    t.string "rest_day", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

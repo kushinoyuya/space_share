@@ -1,18 +1,70 @@
-<div class="container">
+<%= render "layouts/setting" %>
+<div class="container-show">
     <div class="row">
-
 
         <section id="content">
             <div class="container">
                 <div class="row">
                     <h1 class="content-title text-center">Content</h1>
-                    <div class="content-inner">
-                    <!-- スペース画像(左) -->
-                    <!-- 店舗情報(右) -->
-                    </div>
-                </div>
-            </div>
+                    <!-- 画像表示 -->
+                        <div class="col-xs-6">
+                            <%# slick実装 %>
+                            <div class="restaurant-image-show">
+                                <!-- Active-Strage 店舗画像  -->
+                                <% @restaurant.images.each do |images| %>
+                                    <%= image_tag images, :size =>'300x190', class: 'trim' %>
+                                <% end %>
+                            </div>
+                        </div>
 
+                        <!-- 店舗情報(右) -->
+                        <div class="col-xs-6">
+                            <div class="info-box">
+                                <!-- 店舗名 -->
+                                <h2 class="text-center"><%= @restaurant.restaurant_name %></h2>
+
+                                <!-- アクセス -->
+                                <p class="restaurant-show">
+                                    <span class="glyphicon glyphicon-map-marker">
+                                        <%= @restaurant.restaurant_address %>
+                                    </span>
+                                </p>
+
+                                <!-- 利用時間(利用可能開始日時〜利用可能終了日時) -->
+                                <p class="restaurant-show">
+                                    <span class="glyphicon glyphicon-time">
+                                        <%= @restaurant.available_start_time %>〜<%= @restaurant.available_end_time %>
+                                    </span>
+                                </p>
+
+                                <!-- 利用料金 -->
+                                <p class="rasturant-show">
+                                    ¥<%= @restaurant.scheduled_usage_fee %>/時間
+                                </p>
+
+                                <!-- 座席数 -->
+                                <p class="restaurant-show">
+                                    <span class="glyphicon glyphicon-user">
+                                        ~<%= @restaurant.seat_number %>人
+                                    </span>
+                                </p>
+
+                                <!-- 設備・サービス -->
+                                設備/サービス
+                                <%= @restaurant.facility %>
+
+                                <!-- 予約フォーム -->
+                                <% if user_signed_in? %>
+                                    <%= form_with model: Restaurant.new do |f| %>
+                                    <%= f.submit "予約をする", class: "btn btn-default", :style=>"display:inline-block;margin-left:15px;", :data => {:disable_with => "予約確定"} %>
+                                    <% end %>
+                                <% end %>
+
+                            </div>
+                        </div>
+
+                </div><%# row %>
+            </div><%# container %>
         </section>
 
         <section id="access">
@@ -27,19 +79,63 @@
         </section>
 
 
-        <section id="review">
-            <div class="container">
-                <div class="row">
-                    <h1 class="review-title text-center">Review</h1>
-                    <div class="review-inner">
-                        <!-- レビュー一覧 -->
-                        <!-- kaminari実装予定 -->
-                    </div>
-                </div>
+    <section id="review">
+        <div class="container">
+            <div class="row">
+            <h1 class="review-title text-center">Review</h1>
+            <div class="box-radius">
+                <table class="table table-responsive">
+                    <tbody>
+                    <% if @reviews.any? %>
+                    <% @reviews.each do |review| %>
+                    <tr>
+                        <td>
+                            <p>投稿者：
+                                <%= review.review_name %>
+                                <% if user_signed_in?%>
+                                    <% if review.user_id == current_user.id%>
+                                <%= link_to "", restaurant_review_path(@restaurant, review),method: :delete,class:"btn btn-danger glyphicon glyphicon-trash pull-right",:data => {:disable_with => ""}%>
+                                    <% end %>
+                                <% end %>
+                            </p>
+                            <p>
+                                <%# ヘルパーメソッド使用 %>
+                                <%= simple_date(review.created_at) %>
+                            </p>
+                            <%# 投稿コメント %>
+                            <p>
+                                <%= review.comment %>
+                            </p>
+                        </td>
+                    </tr>
+                    <%end%>
+                    <%else%>
+                    <tr><td>レビューはまだありません。</td></tr>
+                    <% end %>
+                    <td class="text-center"><%= paginate @reviews %></td>
+                    </tbody>
+                </table>
+
+
+            <%# レビュー投稿 %>
+            <% if user_signed_in? %>
+            <h4 class="glyphicon glyphicon-pencil" style="margin-top:-10px;">新規投稿・編集</h4>
+            <div class="item-rev-edit">
+
+                <%= form_for([@restaurant,@review]) do |f| %>
+                    <p>名前</p>
+                    <%= f.text_field :review_name,class:"form-control" ,placeholder:"ニックネームを入力"%>
+                    <p>レビュー</p>
+                    <%= f.text_area :comment,class:"form-control",placeholder:"レビューを入力（投稿は飲食店につき１件まで可能です。）" %>
+                    <p></p>
+                    <%# hidden_fieldで情報を渡す %>
+                    <%#= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+                    <%= f.submit("レビューする",class: 'btn btn-primary center-block ') %>
+                <% end %>
             </div>
-        </section>
-
-        <!-- 予約フォーム -->
-
+            <% end %>
+            </div>
+        </div>
     </div><!-- row -->
 </div><!-- container -->
+    </section>

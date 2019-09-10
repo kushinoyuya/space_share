@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row">
+
+        <%# sidetag部分テンプレートここから %>
+        <%# sidetag部分テンプレートここまで %>
+
+        <div class="col-sm-9">
+            <h1 class="reservation-index-title text-center">Reservaion Index</h1>
+            <%# 予約情報Each文 %>
+            <% @reservations.each do |reservations| %>
+            <div class="box-radius">
+                <table class="table" style="margin:-10px;">
+                    <tbody>
+                        <%# 左側 %>
+                        <td class="col-xs-3" style="border-top-style:none;">
+                            <%# 店舗写真 %>
+                            <% if reservations.restaurant.images.attached? %>
+                                <% reservations.restaurant.images.each do |image| %>
+                                    <%= image_tag image, :fill, 100, 100, fallback: "no_image.jpg", :size=>"100x100",class:"images" %>
+                                <% end %>
+                            <% end %>
+                        </td>
+
+                        <%# 右側 %>
+                        <td class="col-xs-3" style="vertical-align:middle; border-top-style:none;">
+                            <%# 店舗名 %>
+                            <span>
+                                <%= reservations.restaurant.restaurant_name %>
+                            </span>
+
+                            <%# 利用日 %>
+                            <span>
+                                <%= reservations.usage_day.strftime("%Y年%n%-m月%-d日") %>
+                            </span>
+
+                            <%# 利用予定時間 %>
+                            <span>
+                                <%= reservations.use_start_time %>〜<%= reservations.use_end_time%>
+                            </span>
+
+                            <%# 利用者 %>
+                            <span>
+                                <%= reservations.user.last_name %>
+                                <%= reservations.user.first_name %>
+                            </span>
+
+                            <%# 利用者数 %>
+                            <span>
+                                <%= reservations.usage_number %>
+                            </span>
+
+                            <%# 利用予定料金 %>
+                            <span>
+                                <%= reservations.usage_fee %>
+                            </span>
+
+                            <%# 予約ステータス %>
+                            <span>
+                                <%= reservations.restaurant_status %>
+                            </span>
+                        </td>
+
+                        <%# 予約変更ー非同期ボタン %>
+
+                    </tbody>
+                </table>
+            </div>
+            <% end %>
+            <%# 予約情報-END %>
+        </div>
+
+    </div><%# row %>
+</div><%# container %>

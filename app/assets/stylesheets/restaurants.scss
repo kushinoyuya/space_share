@@ -1,3 +1,133 @@
 // Place all the styles related to the Restaurants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// --------------------------------------------飲食店一覧画面
+// 検索フォームレイアウト(ここから)
+.search-wrapper {
+    text-align: center;
+    border-radius: 13px;
+    // padding: 4px;
+    // margin-bottom: 7px;
+    height: 100px;
+    input {
+        padding: 3px;
+        outline: none;
+        background-color: white;
+        border: none;
+        color: black;
+        &:-webkit-autofill {
+            box-shadow: 0 0 0px 1000px black inset;
+        }
+    }
+    .search-place{
+        height: 100px;
+        input{
+            width: 100%;
+            border: 1px solid black;
+            border-radius: 30px;
+            font-size: 30px;
+        }
+    }
+    .search-prefecture{
+        height: 100px;
+        input{
+            width: 100%;
+            border: 1px solid black;
+            border-radius: 30px;
+            font-size: 30px;
+        }
+    }
+    .search-btn {
+        height: 100px;
+        margin-top: -20px;
+        input {
+            border-radius: 10px;
+            border: 1px solid black;
+            padding: 2px 10px;
+            width:100%;
+            transition: .3s ease-out;
+            outline: none;
+            font-size: 30px;
+            &:hover {
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}
+// 検索フォームレイアウト(ここから)
+.restaurant-image{
+    margin-left: 5px;
+}
+
+// 飲食店情報
+.restaurant-index{
+    margin-left: 5px;
+}
+
+// search-title
+.search-title{
+    padding-top: 10px;
+    font-family: "Raleway" sans-serif;
+    font-size: 32px;
+    color: black;
+}
+.search-title::after{
+    content: "";
+    display: block;
+    width: 95px;
+    height: 3px;
+    background-color: #20b2aa;
+    margin: 8px auto 0 auto;
+}
+
+// --------------------------------------------飲食店詳細画面
+
+// content-title
+.content-title{
+    padding-top: 10px;
+    font-family: "Raleway" sans-serif;
+    font-size: 32px;
+    color: black;
+}
+.content-title::after{
+    content: "";
+    display: block;
+    width: 95px;
+    height: 3px;
+    background-color: #20b2aa;
+    margin: 8px auto 0 auto;
+}
+
+// access-title
+.access-title{
+    padding-top: 10px;
+    font-family: "Raleway" sans-serif;
+    font-size: 32px;
+    color: black;
+}
+.access-title::after{
+    content: "";
+    display: block;
+    width: 95px;
+    height: 3px;
+    background-color: #20b2aa;
+    margin: 8px auto 0 auto;
+}
+
+// review-title
+.review-title{
+    padding-top: 10px;
+    font-family: "Raleway" sans-serif;
+    font-size: 32px;
+    color: black;
+}
+.review-title::after{
+    content: "";
+    display: block;
+    width: 95px;
+    height: 3px;
+    background-color: #20b2aa;
+    margin: 8px auto 0 auto;
+}

@@ -1,0 +1,74 @@
+<%= render "layouts/setting" %>
+
+<div class="container-user-index">
+    <div class="row">
+
+
+        <%# User %>
+        <section id="my-profile">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h2 class="my-profile-title text-center">My Profile</h2>
+                        <h3><%= @user.last_name %> <%= @user.first_name %> さんの登録情報</h3>
+                        <div class="box">
+                            <div class="row form-box">
+                                <div class="col-xs-2"><label>氏名</label></div>
+                                <div class="col-xs-10"><%= @user.last_name %> <%= @user.first_name %></div>
+                            </div>
+                            <div class="row form-box">
+                                <div class="col-xs-2"><label>カナ</label></div>
+                                <div class="col-xs-10"><%= @user.last_kana %> <%= @user.first_kana %></div>
+                            </div>
+                            <div class="row form-box">
+                                <div class="col-xs-2"><label>電話番号</label></div>
+                                <div class="col-xs-10"><%= @user.phone_number %></div>
+                            </div>
+                            <div class="row form-box">
+                                <div class="col-xs-2"><label>メールアドレス</label></div>
+                                <div class="col-xs-10"><%= @user.email %></div>
+                            </div>
+                            <div class="row form-box">
+                                <div class="col-xs-2"><label>パスワード</label></div>
+                                <div class="col-xs-10"><%= @user.encrypted_password = "●●●●" %></div>
+                            </div>
+                            <div class="btn" ><%= link_to "編集", edit_user_path(@user.id), class: "btn btn-primary" %></div>
+                            <div class="btn" ><%= link_to "退会", user_registration_path, data: { confirm: "本当によろしいですか?" }, method: :delete, class:"btn btn-danger" %></div>
+                        </div><%# User-box %>
+                </div><%# User-row %>
+            </div><%# User-container %>
+        </section>
+
+
+        <%# 予約 %>
+        <section id="my-reservation">
+            <div class="container">
+                <div class="row">
+                    <h1 class="my-reservation-title text-center">My Reservation</h1>
+                    <%# reservation-Each %>
+                    <%# reservation-END %>
+                    <%# KAMINARI実装(5) %>
+                </div>
+            </div>
+        </section>
+
+
+        <%# いいね %>
+        <section id="my-likes">
+            <div class="container">
+                <div class="row">
+                    <h1 class="my-likes-title text-center">My Likes</h1>
+                    <%# like-Each %>
+                    <%# like-END %>
+                    <%# KAMINARI実装(5) %>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+    </div><%# row %>
+</div><%# container-user-index %>

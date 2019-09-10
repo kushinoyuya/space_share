@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
-
+# config/initializers/...config.scoped_views = true　
+# falseになっていると画面レイアウトができないので注意
   devise_for :users
   devise_for :owners
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  # Topページ
-  get "top" => "root#top"
+# Topページ
+root "root#top"
+
+
 
   # ユーザー
   resources :users
@@ -15,8 +18,9 @@ Rails.application.routes.draw do
   resources :reservations
 
   # 飲食店（空きスペース）
-  resources :restaurants
-
+  resources :restaurants do
+    resources :reviews
+  end
   # オーナー
   resources :owners
 
@@ -24,7 +28,6 @@ Rails.application.routes.draw do
   resources :likes
 
   # レビュー機能
-  resources :reviews
 
 
 end
