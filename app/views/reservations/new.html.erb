@@ -11,7 +11,7 @@
         <%# 店舗名 %>
         <div class="row form-box">
             <div class="col-sm-2">
-                <label for="">店舗名</label>
+                <label for="">■店舗名</label>
             </div>
             <div class="col-sm-10">
                 <%= @restaurant.restaurant_name %>
@@ -22,7 +22,7 @@
         <%# 利用日 %>
         <div class="row">
             <div class="col-xs-2">
-                <label for="">利用日</label>
+                <label for="">■利用日</label>
             </div>
             <div class="col-sm-10">
 
@@ -31,35 +31,23 @@
         <p></p><%# 間隔調整 %>
 
 
-<%# テスト %>
-<<div class="input-group" data-target-input="nearest">
-    <%= f.text_field :use_stary_time, id: "use_start_time", class: "form-control datepicker", data: { target: '#use_start_time'} %>
-    <div class="input-group-append" data-target="#use_start_time" data-toggle="datetimepicker">
-        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+<%# 利用時間 %>
+<section class="section">
+    <div class="section__block section__block--scoped">
+        <h3>利用時間</h3>
+        <fieldset class="fieldset fieldset--demo">
+            <div class="fieldset__wrapper">
+                <label> ■予約日　 </label></br>
+                <%= f.text_field :use_day, id:'use_day', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+                <label> ■予約開始時間　</label></br>
+                <%= f.text_field :use_start_time, id:'use_start_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+                <label> ■予約終了時間　</label></br>
+                <%= f.text_field :use_end_time, id:'use_end_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+            </div>
+        </fieldset>
     </div>
-</div><%# テスト %>
+</section>
 
-
-
-
-
-
-        <%# 利用時間 %>
-        <div class="row">
-            <div class="col-xs-2">
-                <label for="">利用時間</label>
-            </div>
-            <div class="col-sm-10">
-                <%# 開始時間（hour） %>
-
-                <%# 開始時間（min） %>
-
-                <%# 終了時間（hour） %>
-
-                <%# 終了時間（min） %>
-
-            </div>
-        </div>
         <p></p><%# 間隔調整 %>
 
         <%# 利用人数 %>
@@ -71,13 +59,13 @@
         <h3>お支払方法</h3>
         <p>銀行振込・代引き・クレジットカードを選択できます。</p>
         <div class="box-radius">
-            <%# <label style="margin-right:70px;"><%= f.radio_button :payment, '代金引換',:checked=>"checked" %>代金引換</label>
-            <%# <label><%= f.radio_button :payment, '銀行振込' %>銀行振込</label> %>
-            <%# <label><%= f.radio_button :payment, 'クレジットカード' %>クレジットカード</label> %>
+            <label style="margin-right:70px;"><%= f.radio_button :payment, '現地払い',:checked=>"checked" %>現地払い</label>
+            <label style="margin-right:70px;"><%= f.radio_button :payment, '銀行振込' %>銀行振込</label>
+            <label style="margin-right:70px;"><%= f.radio_button :payment, 'クレジットカード' %>クレジットカード</label>
             <%# pay.jp %>
         </div>
         <%# 予約確定ボタン %>
-        <%= f.submit%>
+        <%= f.submit "予約する" ,class:"btn btn-primary btn-lg"%>
         <% end %>
     </div>
 </div>

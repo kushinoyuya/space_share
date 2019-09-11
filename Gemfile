@@ -90,3 +90,6 @@ gem 'payjp'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 # 定休日複数選択
 gem "select2-rails"
+# Pickadate.js railsで実装
+gem 'pickadate-rails'
+gem 'dotenv-rails'

@@ -63,7 +63,7 @@ Restaurant.create!(
     available_end_time: "2019-09-02 19:00:15",
     seat_number: "4",
     usage_status: "予約可能",
-    prefecture: "千葉",
+    prefecture: "北海道",
     created_at: "2019/08/30",
     updated_at: "2019/08/30",
     rest_day: "月"
@@ -98,6 +98,7 @@ Reservation.create!(
     use_end_time: "2019-09-02 17:00:15",
     usage_number: "4",
     usage_day: "2019/09/30",
+    payment: "クレジットカード",
     created_at: "2019/08/30",
     updated_at: "2019/08/30"
 )

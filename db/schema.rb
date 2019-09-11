@@ -65,10 +65,11 @@ ActiveRecord::Schema.define(version: 2019_09_03_131447) do
   create_table "reservations", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "restaurant_id", null: false
+    t.integer "payment", null: false
     t.string "restaurant_status", default: "", null: false
     t.string "usage_fee", default: "", null: false
-    t.string "use_start_time", default: "", null: false
-    t.string "use_end_time", default: "", null: false
+    t.datetime "use_start_time", null: false
+    t.datetime "use_end_time", null: false
     t.string "usage_number", default: "", null: false
     t.datetime "usage_day", null: false
     t.datetime "created_at", null: false
@@ -77,16 +78,16 @@ ActiveRecord::Schema.define(version: 2019_09_03_131447) do
 
   create_table "restaurants", force: :cascade do |t|
     t.integer "owner_id", null: false
+    t.integer "prefecture", null: false
     t.string "restaurant_name", default: "", null: false
     t.string "restaurant_address", default: "", null: false
     t.string "facility", default: "", null: false
     t.string "scheduled_usage_fee", default: "", null: false
-    t.string "available_start_time", default: "", null: false
-    t.string "available_end_time", default: "", null: false
+    t.datetime "available_start_time", null: false
+    t.datetime "available_end_time", null: false
     t.string "seat_number", default: "", null: false
     t.string "usage_status", default: "", null: false
-    t.string "prefecture", default: "", null: false
-    t.string "rest_day", default: "", null: false
+    t.datetime "rest_day", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
