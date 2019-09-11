@@ -131,3 +131,19 @@
     background-color: #20b2aa;
     margin: 8px auto 0 auto;
 }
+
+// restaurant-registration-title
+.restaurant-registration-title{
+    padding-top: 10px;
+    font-family: "Raleway" sans-serif;
+    font-size: 32px;
+    color: black;
+}
+.restaurant-registration-title::after{
+    content: "";
+    display: block;
+    width: 150px;
+    height: 3px;
+    background-color: #20b2aa;
+    margin: 8px auto 0 auto;
+}

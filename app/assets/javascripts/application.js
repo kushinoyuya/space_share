@@ -13,7 +13,7 @@
 //= require rails-ujs
 //= require jquery.slick
 //= require activestorage
-//= require turbolinks
+
 //= require jquery
 //= require bootstrap-sprockets
 //= require select2
@@ -26,7 +26,7 @@
 
 
 // メニュークリック画面遷移
-$(document).on("turbolinks:load",function(){
+$(function(){
     $("a[href^='#']").on('click', function() {
         let href = $(this).attr('href');
         let offset = $(href).offset();

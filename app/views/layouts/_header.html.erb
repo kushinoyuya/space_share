@@ -1,14 +1,17 @@
 <header class="container-fluid">
     <div class="row">
 
+
         <!-- logoの表示 -->
         <div class="logo pull-left">
             <%= image_tag "space-share.jpg", size:'70x70' %>
         </div>
 
+
+        <div class="header-box pull-right">
         <%# Userログインページ %>
+        <% if user_signed_in? %>
         <div class="login-status pull-right">
-            <% if user_signed_in? %>
                 <!-- 飲食店一覧画面に遷移する -->
                 <li class="nav-list">
                     <div class="header-link">
@@ -21,17 +24,27 @@
                         <%= link_to "My page", user_path(current_user), :style=>"color:white;", class: 'button' %>
                     </div>
                 </li>
-                <span class="glyphicon glyphicon-user"></span>
-                <%= link_to user_path(current_user), :style=>"color:#982031;" do %>
-                <%= current_user.last_name %>
-                <% end %>さん<br>
+                <span class="glyphicon glyphicon-user" style="margin-right:10px;" ></span>
+                <span style="color:#ac177c;"><%= current_user.last_name %></span>さん<br>
                 ログイン中<br>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         </div>
 
         <%# Ownerログインページ %>
+        <% elsif owner_signed_in? %>
         <div class="login-status pull-right">
-            <% elsif owner_signed_in? %>
+                <!-- トップ画面画面に遷移する -->
+                <li class="nav-list">
+                    <div class="header-link">
+                        <%= link_to "top", root_path, :style=>"color:white;", class: 'button' %>
+                    </div>
+                </li>
+                <!-- 飲食店登録画面に遷移する -->
+                <li class="nav-list">
+                    <div class="header-link">
+                        <%= link_to "restaurant", new_restaurant_path, :style=>"color:white;", class: 'button' %>
+                    </div>
+                </li>
                 <!-- 予約一覧画面画面に遷移する -->
                 <li class="nav-list">
                     <div class="header-link">
@@ -44,13 +57,12 @@
                         <%= link_to "My page", owner_path(current_owner), :style=>"color:white;", class: 'button' %>
                     </div>
                 </li>
-                <span class="glyphicon glyphicon-user"></span>
-                <%= link_to owner_path(current_owner), :style=>"color:#982031;" do %>
-                <%= current_owner.last_name %>
-                <% end %>さん<br>
+                <span class="glyphicon glyphicon-user" style="margin-right:10px;" ></span>
+                <span style="color:#ac177c;"><%= current_owner.last_name %></span>さん<br>
                 ログイン中<br>
                 <%= link_to "ログアウト", destroy_owner_session_path, method: :delete %>
         </div>
+        <div class="login-status pull-right"></div>
 
 
         <%# デフォルトページ %>
@@ -69,6 +81,14 @@
                     </div>
                 </li>
         <% end %>
+
+                <!-- トップ画面画面に遷移する -->
+                <li class="nav-list">
+                    <div class="header-link">
+                        <%= link_to "top", root_path, :style=>"color:white;", class: 'button' %>
+                    </div>
+                </li>
+
 
                 <li class="nav-list">
                     <div class="header-link">
@@ -99,6 +119,6 @@
 
         <% end %>
 
-
+        </div><!-- header-box -->
     </div><!-- row -->
 </header><!-- container-fluid -->

@@ -19,15 +19,17 @@ root "root#top"
 
   # 飲食店（空きスペース）
   resources :restaurants do
+      # レビュー機能
     resources :reviews
+    get 'reservation_form' => 'reservations#new',as: 'reservations_form'
   end
   # オーナー
   resources :owners
 
-  # いいね機能
+  # いいね機能（いらないかも）
   resources :likes
 
-  # レビュー機能
+
 
 
 end

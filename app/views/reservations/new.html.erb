@@ -4,11 +4,6 @@
 <div class="container">
     <div class="row">
         <h1 class="reservation-registration-title text-center">予約登録画面</h1>
-        <div class="list">
-            <li>ログイン・新規登録</li>
-            <li>予約設定</li>
-            <li>予約完了</li>
-        </div>
         <div class="box text-center">
             <%= form_with(model: @reservation, local:true) do |f| %>
         </div>
@@ -19,7 +14,7 @@
                 <label for="">店舗名</label>
             </div>
             <div class="col-sm-10">
-                <%= @reservation.restaurant.restaurant_name %>
+                <%= @restaurant.restaurant_name %>
             </div>
         </div>
         <p></p><%# 間隔調整 %>
@@ -30,10 +25,24 @@
                 <label for="">利用日</label>
             </div>
             <div class="col-sm-10">
-                <%= f.select :usage_day, options_for_select((1..31).to_a), {}, class: "form-control", :style=>"width:50px;display:inline-block;margin-top:20px;" %>
+
             </div>
         </div>
         <p></p><%# 間隔調整 %>
+
+
+<%# テスト %>
+<<div class="input-group" data-target-input="nearest">
+    <%= f.text_field :use_stary_time, id: "use_start_time", class: "form-control datepicker", data: { target: '#use_start_time'} %>
+    <div class="input-group-append" data-target="#use_start_time" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+    </div>
+</div><%# テスト %>
+
+
+
+
+
 
         <%# 利用時間 %>
         <div class="row">
@@ -42,13 +51,13 @@
             </div>
             <div class="col-sm-10">
                 <%# 開始時間（hour） %>
-                <%= f.select :use_start_time_hour, options_for_select(@reservation_use_start_time_hour_hour) %>：
+
                 <%# 開始時間（min） %>
-                <%= f.select :use_start_time_min, options_for_select(@reservation_use_start_time_hour_min) %>〜
+
                 <%# 終了時間（hour） %>
-                <%= f.select :use_end_time_hour, options_for_select(@reservation_use_end_time_hour) %>：
+
                 <%# 終了時間（min） %>
-                <%= f.select :use_end_time_min, options_for_select(@reservation_use_end_time_min) %>
+
             </div>
         </div>
         <p></p><%# 間隔調整 %>
@@ -68,6 +77,7 @@
             <%# pay.jp %>
         </div>
         <%# 予約確定ボタン %>
+        <%= f.submit%>
         <% end %>
     </div>
 </div>

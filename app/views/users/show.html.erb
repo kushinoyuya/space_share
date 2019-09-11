@@ -8,33 +8,32 @@
         <section id="my-profile">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-9">
+                    <div class="box">
                         <h2 class="my-profile-title text-center">My Profile</h2>
-                        <h3><%= @user.last_name %> <%= @user.first_name %> さんの登録情報</h3>
-                        <div class="box">
-                            <div class="row form-box">
-                                <div class="col-xs-2"><label>氏名</label></div>
-                                <div class="col-xs-10"><%= @user.last_name %> <%= @user.first_name %></div>
-                            </div>
-                            <div class="row form-box">
-                                <div class="col-xs-2"><label>カナ</label></div>
-                                <div class="col-xs-10"><%= @user.last_kana %> <%= @user.first_kana %></div>
-                            </div>
-                            <div class="row form-box">
-                                <div class="col-xs-2"><label>電話番号</label></div>
-                                <div class="col-xs-10"><%= @user.phone_number %></div>
-                            </div>
-                            <div class="row form-box">
-                                <div class="col-xs-2"><label>メールアドレス</label></div>
-                                <div class="col-xs-10"><%= @user.email %></div>
-                            </div>
-                            <div class="row form-box">
-                                <div class="col-xs-2"><label>パスワード</label></div>
-                                <div class="col-xs-10"><%= @user.encrypted_password = "●●●●" %></div>
-                            </div>
-                            <div class="btn" ><%= link_to "編集", edit_user_path(@user.id), class: "btn btn-primary" %></div>
-                            <div class="btn" ><%= link_to "退会", user_registration_path, data: { confirm: "本当によろしいですか?" }, method: :delete, class:"btn btn-danger" %></div>
-                        </div><%# User-box %>
+                        <h3 class="text-center"><%= @user.last_name %> <%= @user.first_name %> さんの登録情報</h3>
+                        <table class="table table-striped table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>氏名</th>
+                                    <th>カナ</th>
+                                    <th>電話番号</th>
+                                    <th>メールアドレス</th>
+                                    <th>パスワード</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><%= @user.last_name %> <%= @user.first_name %></td>
+                                    <td><%= @user.last_kana %> <%= @user.first_kana %></td>
+                                    <td><%= @user.phone_number %></td>
+                                    <td><%= @user.email %></td>
+                                    <td><%= @user.encrypted_password = "●●●●" %></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="btn pull-left" ><%= link_to "編集", edit_user_path(@user.id), class: "btn btn-primary" %></div>
+                        <div class="btn pull-left" ><%= link_to "退会", user_registration_path, data: { confirm: "本当によろしいですか?" }, method: :delete, class:"btn btn-danger" %></div>
+                    </div><%# User-box %>
                 </div><%# User-row %>
             </div><%# User-container %>
         </section>

@@ -1,15 +1,10 @@
+<%= render "layouts/setting" %>
 <div class="container">
     <div class="row">
     <h1 class="restaurant-registration-title text-center">Restaurant Registration</h1>
-        <%# sidetag部分テンプレートここから %>
-        <div class="col-sm-3">
-            <%# render partial: "layouts/sidetag" %>
-            <%= render partial: "layouts/sidetag" %>
-        </div>
-        <%# sidetag部分テンプレートここまで %>
 
 
-        <div class="col-sm-9">
+        <div class="box-new">
             <div class="box text-center">
                 <%= form_with(model: @restaurant, local:true) do |f| %>
 
@@ -88,7 +83,7 @@
                     <div class="col-sm-10">
                         <%# ラジオボタン %>
                         <%# f.check_box_tag :id, restaurant.id, :checked=>"checked" %>
-                        <%= f. :rest_day, options_for_select(@restaurant_available_start_time_min), class:"mySelect2", multiple: true %>
+                        <%# f. :rest_day, options_for_select(@restaurant_available_start_time_min), class:"mySelect2", multiple: true %>
                     </div>
                 </div>
                 <p></p><%# 間隔調整 %>
