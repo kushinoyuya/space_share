@@ -15,7 +15,11 @@ root "root#top"
   resources :users
 
   # 予約
-  resources :reservations
+  resources :reservations do
+    collection do
+      post 'pay'
+    end
+  end
 
   # 飲食店（空きスペース）
   resources :restaurants do

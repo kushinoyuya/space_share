@@ -8,7 +8,10 @@ class ReservationsController < ApplicationController
         # ルーティングを調整
         @restaurant = Restaurant.find(params[:restaurant_id])
         # render :new
+
         set_form_values
+
+
     end
 
     def create
@@ -40,6 +43,18 @@ class ReservationsController < ApplicationController
     def edit
 
     end
+
+
+    # クレジットカード
+    def pay
+        Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+        Payjp::Charge.create(
+            :amount => params[:amount],
+            :card => params['payjp-token'],
+            :currency => 'jpy'
+        )
+    end
+
 
 
     private

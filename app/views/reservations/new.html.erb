@@ -59,13 +59,49 @@
         <h3>お支払方法</h3>
         <p>銀行振込・代引き・クレジットカードを選択できます。</p>
         <div class="box-radius">
-            <label style="margin-right:70px;"><%= f.radio_button :payment, '現地払い',:checked=>"checked" %>現地払い</label>
-            <label style="margin-right:70px;"><%= f.radio_button :payment, '銀行振込' %>銀行振込</label>
-            <label style="margin-right:70px;"><%= f.radio_button :payment, 'クレジットカード' %>クレジットカード</label>
-            <%# pay.jp %>
+            <label style="margin-right:70px;"><%= f.radio_button :payment, '現地払い', :checked=>"checked",:onclick=>"payBtnClose()" %>現地払い</label>
+            <label style="margin-right:70px;"><%= f.radio_button :payment, '銀行振込',:onclick=>"payBtnClose()" %>銀行振込</label>
+            <label style="margin-right:70px;"><%= f.radio_button :payment, 'クレジットカード', class:"pay-check" ,:onclick=>"payBtnOpen()" %>クレジットカード</label>
         </div>
+
+
+        <p></p>
+
         <%# 予約確定ボタン %>
-        <%= f.submit "予約する" ,class:"btn btn-primary btn-lg"%>
+        <div class="reservation-btn">
+            <%= f.submit "予約確定" ,class:"btn btn-primary btn-lg" %>
+        </div>
         <% end %>
+
+
+        <%# pay.jp %>
+        <div id="pay    ">
+            <p class="pay-text">下記のボタンを押して、カード情報を入力してください</p>
+                <%# <form action="/reservations/pay" method="post">%>
+                <%= form_with(url: pay_reservations_path, local: true) do |pay| %>
+                <script
+                    type="text/javascript"
+                    src="https://checkout.pay.jp"
+                    class="payjp-button"
+                    data-key="<%= ENV["PAYJP_PUBLIC_KEY"] %>">
+                </script>
+                <% end %>
+        </div>
+
+
+
+
     </div>
 </div>
+
+<%# pay.jp表示関数 %>
+<script>
+    function payBtnOpen(){
+        let p = document.getElementById("pay");
+        p.style.display = 'block';
+    }
+    function payBtnClose(){
+        let p = document.getElementById("pay");
+        p.style.display = 'none';
+    }
+</script>
