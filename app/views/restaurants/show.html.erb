@@ -26,15 +26,20 @@
                                 <!-- アクセス -->
                                 <p class="restaurant-show">
                                     <span class="glyphicon glyphicon-map-marker">
+                                        <%= @restaurant.prefecture %>
                                         <%= @restaurant.restaurant_address %>
                                     </span>
                                 </p>
 
                                 <!-- 利用時間(利用可能開始日時〜利用可能終了日時) -->
                                 <p class="restaurant-show">
-                                    <span class="glyphicon glyphicon-time">
-                                        <%= @restaurant.available_start_time %>〜<%= @restaurant.available_end_time %>
-                                    </span>
+                                    <span class="glyphicon glyphicon-time"> 利用可能時間</span>
+                                    <p>
+                                        開始時間:<span><%= @restaurant.available_start_time.strftime('%Y年%m月%d日 %H時%M分') %></span>
+                                    </p>
+                                    <p>
+                                        終了時間:<span><%= @restaurant.available_end_time.strftime('%Y年%m月%d日 %H時%M分') %></span>
+                                    </p>
                                 </p>
 
                                 <!-- 利用料金 -->
@@ -74,6 +79,10 @@
                     <h1 class="access-title text-center">Access</h1>
                     <div class="access-inner">
                         <!-- Google Map使用 -->
+
+
+
+
                     </div>
                 </div>
             </div>

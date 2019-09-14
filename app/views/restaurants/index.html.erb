@@ -55,13 +55,20 @@
             <h5 class="restaurant-index">
                 <!-- アクセス -->
                 <span class="glyphicon glyphicon-map-marker"></span>
+                <%= results.prefecture %>
                 <%= results.restaurant_address %>
             </h5>
             <p></p>
             <h5 class="restaurant-index">
                 <!-- 利用可能時間 -->
-                <span class="glyphicon glyphicon-time"></span>
-                <%= results.available_start_time %>〜<%= results.available_end_time %>
+                <p><span class="glyphicon glyphicon-time"> 利用可能時間</span></p>
+                <p>
+                    利用開始時刻:<%= results.available_start_time.strftime('%Y年%m月%d日 %H時%M分') %>
+                </p>
+                <p>
+                    利用終了時刻:<%= results.available_end_time.strftime('%Y年%m月%d日 %H時%M分') %>
+                </p>
+
             </h5>
             <p></p>
             <strong>
@@ -80,16 +87,7 @@
                     <%= link_to ">>店舗詳細", restaurant_path(results) %>
                 </h5>
                 <p></p>
-
-
         </div>
-
-
-
-
-
-
-
     </div><!-- row -->
 </div><!-- container -->
 <% end %><!-- resultsのEND -->

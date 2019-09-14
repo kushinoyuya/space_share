@@ -2,29 +2,19 @@ class RestaurantsController < ApplicationController
 
     def new
         @restaurant = Restaurant.new
-        set_form_values
+        # set_form_values
     end
 
     def create
         @restaurant = Restaurant.new(restaurant_params)
-        @restaurant.available_start_time = params[:restaurant][:available_start_time_hour] + ":" + params[:restaurant][:available_start_time_min]
-        @restaurant.available_end_time = params[:restaurant][:available_end_time_hour] + ":" + params[:restaurant][:available_end_time_min]
-
-        if params[:restaurant][:available_start_time_hour].to_i > params[:restaurant][:available_end_time_hour].to_i
-            flash.now[:alert] = "登録に失敗しました"
-            # 処理を中断させる
-            @restaurant = Restaurant.new
-            set_form_values
-            render :new
-            return
-        end
+        @restaurant.owner_id = current_owner.id
 
         if @restaurant.save
-            redirect_to restaurants_path(@restaurant), :notice => "登録しました"
+            redirect_to owner_path(current_owner), :notice => "登録しました"
         else
             flash.now[:alert] = "登録に失敗しました"
             @restaurant = Restaurant.new
-            set_form_values
+            # set_form_values
             render :new
         end
     end
@@ -58,8 +48,6 @@ class RestaurantsController < ApplicationController
                 @review = Review.new
             end
         end
-
-
     end
 
     def edit
@@ -67,20 +55,8 @@ class RestaurantsController < ApplicationController
     end
 
     private
-
-    def set_form_values
-        # 開始時間単位（00~24）hourの配列
-        @restaurant_available_start_time_hour = (0..23).to_a
-        # 開始分単位（00~55）minの配列
-        @restaurant_available_start_time_min = (0..55).to_a
-        # 終了時間単位（00~24）hourの配列
-        @restaurant_available_end_time_hour = (0..24).to_a
-        # 終了分単位（00~55）minの配列
-        @restaurant_available_end_time_min = (0..55).to_a
-    end
-
     def restaurant_params
-        params.require(:restaurant).permit(:owner_id, :restaurant_name, :restaurant_address, :facility, :scheduled_usage_fee, :available_start_time, :available_end_time, prefecture:[], images: [])
+        params.require(:restaurant).permit(:owner_id, :restaurant_name, :restaurant_address, :facility, :scheduled_usage_fee, :available_start_time, :available_end_time, :prefecture, :rest_day, images: [])
     end
 
 end

@@ -93,3 +93,5 @@ gem "select2-rails"
 # Pickadate.js railsで実装
 gem 'pickadate-rails'
 gem 'dotenv-rails'
+# googlemap
+gem 'geocoder'

@@ -9,9 +9,9 @@
 
 
         <div class="header-box pull-right">
-        <%# Userログインページ %>
+        <%# Userログイン中 %>
         <% if user_signed_in? %>
-        <div class="login-status pull-right">
+            <div class="login-status pull-right">
                 <!-- 飲食店一覧画面に遷移する -->
                 <li class="nav-list">
                     <div class="header-link">
@@ -28,11 +28,11 @@
                 <span style="color:#ac177c;"><%= current_user.last_name %></span>さん<br>
                 ログイン中<br>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </div>
+            </div>
 
-        <%# Ownerログインページ %>
+        <%# Ownerログイン中 %>
         <% elsif owner_signed_in? %>
-        <div class="login-status pull-right">
+            <div class="login-status pull-right">
                 <!-- トップ画面画面に遷移する -->
                 <li class="nav-list">
                     <div class="header-link">
@@ -45,12 +45,6 @@
                         <%= link_to "restaurant", new_restaurant_path, :style=>"color:white;", class: 'button' %>
                     </div>
                 </li>
-                <!-- 予約一覧画面画面に遷移する -->
-                <li class="nav-list">
-                    <div class="header-link">
-                        <%= link_to "reservation", reservations_path, :style=>"color:white;", class: 'button' %>
-                    </div>
-                </li>
                 <!-- オーナー詳細画面に遷移する -->
                 <li class="nav-list">
                     <div class="header-link">
@@ -61,63 +55,66 @@
                 <span style="color:#ac177c;"><%= current_owner.last_name %></span>さん<br>
                 ログイン中<br>
                 <%= link_to "ログアウト", destroy_owner_session_path, method: :delete %>
-        </div>
-        <div class="login-status pull-right"></div>
+            </div>
 
 
-        <%# デフォルトページ %>
+
+        <%# ログイン外 %>
         <% else %>
-        <% if current_page?(root_path) %>
-        <nav class="header-nav">
-            <ul>
-                <li class="nav-list">
-                    <div class="header-link">
-                        <a href="#concept-area" class="button">Concept</a>
-                    </div>
-                </li>
-                <li class="nav-list">
-                    <div class="header-link">
-                        <a href="#service-area" class="button">Service</a>
-                    </div>
-                </li>
-        <% end %>
+            <% if current_page?(root_path) %>
+            <nav class="header-nav">
+                <ul>
+                    <li class="nav-list">
+                        <div class="header-link">
+                            <a href="#concept-area" class="button">Concept</a>
+                        </div>
+                    </li>
+                    <li class="nav-list">
+                        <div class="header-link">
+                            <a href="#service-area" class="button">Service</a>
+                        </div>
+                    </li>
+            <% end %><%# current_page?(root_path) %>
 
-                <!-- トップ画面画面に遷移する -->
-                <li class="nav-list">
-                    <div class="header-link">
-                        <%= link_to "top", root_path, :style=>"color:white;", class: 'button' %>
-                    </div>
-                </li>
+                    <!-- トップ画面画面に遷移する -->
+                    <li class="nav-list">
+                        <div class="header-link">
+                            <%= link_to "top", root_path, :style=>"color:white;", class: 'button' %>
+                        </div>
+                    </li>
 
+                    <!-- 飲食店一覧画面に遷移する -->
+                    <li class="nav-list">
+                        <div class="header-link">
+                            <%= link_to "Index", restaurants_path, :style=>"color:white;", class: 'button' %>
+                        </div>
+                    </li>
 
-                <li class="nav-list">
-                    <div class="header-link">
-                        <!-- 飲食店一覧画面に遷移する -->
-                        <%= link_to "Index", restaurants_path, :style=>"color:white;", class: 'button' %>
-                    </div>
-                </li>
+                    <!-- ユーザーの詳細画面に遷移する -->
+                    <li class="nav-list">
+                        <div class="header-link">
+                            <% if current_user %>
+                                <%= link_to "User", user_path(current_user.id), :style=>"color:white;", class: 'button' %>
+                            <% else %>
+                                <%= link_to "User", new_user_registration_path, :style=>"color:white;", class: 'button' %>
+                            <% end %>
+                        </div>
+                    </li>
 
+                    <!-- オーナー詳細画面に遷移する -->
+                    <li class="nav-list">
+                        <div class="header-link">
+                            <% if current_owner %>
+                                <%= link_to "Owner", owner_path(current_owner.id), :style=>"color:white;", class: 'button' %>
+                            <% else %>
+                                <%= link_to "Owners", new_owner_registration_path, :style=>"color:white;", class: 'button' %>
+                            <% end %>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
 
-                <li class="nav-list">
-                    <div class="header-link">
-                        <!-- 飲食店一覧画面に遷移する -->
-                        <% if current_user %>
-                            <%= link_to "User", user_path(current_user.id), :style=>"color:white;", class: 'button' %>
-                        <% else %>
-                            <%= link_to "User", new_user_registration_path, :style=>"color:white;", class: 'button' %>
-                        <% end %>
-                    </div>
-                </li>
-                <li class="nav-list">
-                    <div class="header-link">
-                        <!-- オーナーログイン画面に遷移する -->
-                        <%= link_to "Owner", owners_path, :style=>"color:white;", class: 'button' %>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-
-        <% end %>
+        <% end %><!-- if user/owner/else     -->
 
         </div><!-- header-box -->
     </div><!-- row -->

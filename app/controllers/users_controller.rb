@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         # アカウント編集後、user/indexに遷移。ダメだったら、編集画面にレンダー。
         if @user.update(user_params)
-            redirect_to users_path
+            redirect_to user_path
         else
             render :edit
         end

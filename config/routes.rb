@@ -2,8 +2,19 @@ Rails.application.routes.draw do
 
 # config/initializers/...config.scoped_views = true　
 # falseになっていると画面レイアウトができないので注意
-  devise_for :users
-  devise_for :owners
+  devise_for :users, controllers: {
+    sessions:       'users/sessions',
+    passwords:      'users/passwords',
+    registrations:  'users/registrations'
+  }
+
+  devise_for :owners, controllers: {
+    sessions:       'owners/sessions',
+    passwords:      'owners/passwords',
+    registrations:  'owners/registrations'
+  }
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 # Topページ

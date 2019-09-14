@@ -1,22 +1,41 @@
+<%= render "layouts/setting" %>
 <div class="container">
     <div class="row">
-    <!-- sidetag  ここから -->
-        <div class="col-xs-3">
-            <div class="side-tag">
-                <!-- サイドタグの部分テンプレート -->
+        <div class="col-md-8 col-md-offset-2">
+            <h2 class="text-center">My Profile Edit</h2>
+            <%= form_for @owner, url: owner_path do |f| %>
+                <div class="box">
+
+                <div class="row form-group name-form">
+                    <div class="item"><%= f.label :氏名 %></div>
+                    <div class="col-md-10 form name-form"><%= f.text_field :last_name, :size=>"25", autofocus: true, class:"form-inline", placeholder:"姓" %>
+                    <%= f.text_field :first_name, :size=>"25", autofocus: true, class:"form-inline", placeholder:"名"%></div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="item"><%= f.label :氏名%><i>(カナ)</i></div>
+                    <div class="col-md-10"><%= f.text_field :last_kana, :size=>"25", autofocus: true, class:"form-inline", placeholder:"セイ" %>
+                    <%= f.text_field :first_kana, :size=>"25", autofocus: true, class:"form-inline", placeholder:"メイ"%></div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="item"><%= f.label :電話番号 %></div>
+                    <div class="col-md-10"><%= f.text_field :phone_number, autofocus: true, class:"form-control", placeholder:"ハイフンなし" %></div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="item"><%= f.label :メールアドレス %></div>
+                    <div class="col-md-10"><%= f.email_field :email, class:"form-control" %></div>
+                </div>
+
+                <div class="text-center">
+                    <%= f.submit "更新する", class:"btn btn-primary btn-block" %>
+                </div>
+                <% end %>
+
+                <div class="link"><%= link_to "戻る", owner_path(@owner.id) %></div>
+
             </div>
-        </div>
-    <!-- sidetag  ここまで -->
-
-        <div class="col-xs-9">
-            <h1 class="owner-profile-edit-title text-center">My Profile Edit</h1>
-
-
-            <!-- Updateボタン -->
-            <!-- オーナー詳細画面に遷移 -->
-        </div>
-
-
-
-    </div><!-- row -->
-</div><!-- container -->
+        </div><%# col-md-8 col-md-offset-2 %>
+    </div><%# row %>
+</div><%# container %>

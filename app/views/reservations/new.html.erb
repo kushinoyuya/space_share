@@ -17,7 +17,6 @@
                 <%= @restaurant.restaurant_name %>
             </div>
         </div>
-        <p></p><%# 間隔調整 %>
 
         <%# 利用日 %>
         <div class="row">
@@ -28,27 +27,24 @@
 
             </div>
         </div>
-        <p></p><%# 間隔調整 %>
 
 
 <%# 利用時間 %>
-<section class="section">
-    <div class="section__block section__block--scoped">
-        <h3>利用時間</h3>
-        <fieldset class="fieldset fieldset--demo">
-            <div class="fieldset__wrapper">
-                <label> ■予約日　 </label></br>
-                <%= f.text_field :use_day, id:'use_day', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
-                <label> ■予約開始時間　</label></br>
-                <%= f.text_field :use_start_time, id:'use_start_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
-                <label> ■予約終了時間　</label></br>
-                <%= f.text_field :use_end_time, id:'use_end_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
-            </div>
-        </fieldset>
-    </div>
-</section>
+<div class="section__block section__block--scoped">
+    <h3>利用時間</h3>
+    <fieldset class="fieldset fieldset--demo">
+        <div class="fieldset__wrapper">
+            <label> ■予約日　 </label></br>
+            <%= f.text_field :usage_day, id:'use_day', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+            <label> ■予約開始時間　</label></br>
+            <%= f.text_field :use_start_time, id:'use_start_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+            <label> ■予約終了時間　</label></br>
+            <%= f.text_field :use_end_time, id:'use_end_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+        </div>
+    </fieldset>
+</div>
 
-        <p></p><%# 間隔調整 %>
+
 
         <%# 利用人数 %>
         <h3>利用人数</h3>
@@ -75,10 +71,11 @@
 
 
         <%# pay.jp %>
-        <div id="pay    ">
+        <div id="pay">
             <p class="pay-text">下記のボタンを押して、カード情報を入力してください</p>
                 <%# <form action="/reservations/pay" method="post">%>
-                <%= form_with(url: pay_reservations_path, local: true) do |pay| %>
+                <%= form_with(local: true,url: pay_reservations_path, id: "charge-form") do |pay| %>
+                金額：<%= pay.text_field :amount %>
                 <script
                     type="text/javascript"
                     src="https://checkout.pay.jp"
@@ -91,8 +88,8 @@
 
 
 
-    </div>
-</div>
+    </div><%# row %>
+</div><%# container %>
 
 <%# pay.jp表示関数 %>
 <script>
