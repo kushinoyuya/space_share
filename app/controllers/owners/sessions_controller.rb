@@ -4,7 +4,7 @@ class Owners::SessionsController < Devise::SessionsController
 
   # ログイン後予約一覧画面に遷移するpathを設定
   def after_sign_in_path_for(resource)
-    reservations_path(resource)
+    restaurants_path(resource)
   end
 
   # ログアウト後オーナーログイン画面へ遷移するpathを設定

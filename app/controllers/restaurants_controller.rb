@@ -1,5 +1,10 @@
 class RestaurantsController < ApplicationController
 
+    # APIを叩くための準備
+    require 'uri'
+    require 'net/http'
+    require 'json'
+
     def new
         @restaurant = Restaurant.new
         # set_form_values
@@ -40,6 +45,15 @@ class RestaurantsController < ApplicationController
         @restaurant = Restaurant.find(params[:id])
         # 飲食店テーブルに紐づいたレビューを複数表示させる
         @reviews = @restaurant.reviews.page(params[:page]).per(3)
+
+        # 日本語のエンコードを定義する
+        query = URI.encode_www_form(address: @restaurant.restaurant_address)
+        uri = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?#{query}&key=AIzaSyB9DEE14qabfiZBdRWmD3wlYAzlKWh16KA")
+        json = Net::HTTP.get(uri) #NET::HTTPを利用してAPOを叩く
+
+        @results = JSON.parse(json)
+        @geometry = @results["results"][0]["geometry"]["viewport"]["northeast"]
+
         if user_signed_in?
             if current_user.reviews.any?
                 @review = current_user.reviews.find_by(restaurant_id: @restaurant.id)
@@ -53,6 +67,16 @@ class RestaurantsController < ApplicationController
     def edit
         @restaurant = Restaurant.find(params[:id])
     end
+
+    def map
+        results = Geocoder.search(params[:restaurant_address])
+        @latlng = results.first.coordinates
+        # これでmap.js.erbで、経度緯度情報が入った@latlngを使える。
+        respond_to do |format|
+            format.js
+        end
+    end
+
 
     private
     def restaurant_params

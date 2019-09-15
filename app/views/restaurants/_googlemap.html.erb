@@ -1,0 +1,27 @@
+<h2>gmap</h2>
+<!-- form_withはデフォルトでremote: trueの挙動になります -->
+<%= form_with url: restaurant_map_request_path(restaurant.id), method: :get do |f|%>
+  <%= f.text_field :address %>
+  <%= f.submit '地図表示' %>
+<% end %>
+
+<div id="map">
+</div>
+
+<style>
+#map{
+  height: 400px;
+}
+</style>
+
+<%# <script>
+  let mapInstance //この変数はmap.js.erbでも使うのでタイプミスに注意
+
+  function initMap(){
+    mapInstance = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api&/js?key=AIzaSyDRx7CxaxflhUJ3RV4jZxj9oQjlVi8MQG0" async defer></script> %>
