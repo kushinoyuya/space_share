@@ -48,7 +48,7 @@ class RestaurantsController < ApplicationController
 
         # 日本語のエンコードを定義する
         query = URI.encode_www_form(address: @restaurant.restaurant_address)
-        uri = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?#{query}&key=AIzaSyB9DEE14qabfiZBdRWmD3wlYAzlKWh16KA")
+        uri = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?#{query}&key=#{ENV['GOOGLE_MAP_KEY']}")
         json = Net::HTTP.get(uri) #NET::HTTPを利用してAPOを叩く
 
         @results = JSON.parse(json)

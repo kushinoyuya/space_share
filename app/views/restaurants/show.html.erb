@@ -79,18 +79,9 @@
                     <h1 class="access-title text-center">Access</h1>
                     <div class="access-inner">
                         <!-- Google Map使用 -->
-                        <h2>gmap</h2>
-<div id='map'></div>
-<iframe width="720" height="620" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.jp/maps?f=q&amp;source=s_q&amp;hl=ja&amp;geocode=&amp;q=<%= @restaurant.restaurant_name %>&amp;aq=&amp;sll=35.975263,139.758453&amp;sspn=0.012763,0.027874&amp;brcurrent=3,0x6018beb343d20c51:0xf46ed726497237bd,0,0x6018beb35f1f38d7:0x6de0fd7e3d9ee138&amp;ie=UTF8&amp;hq=&amp;hnear=%E5%9F%BC%E7%8E%89%E7%9C%8C%E6%98%A5%E6%97%A5%E9%83%A8%E5%B8%82%E5%8D%97%EF%BC%91%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%94%E2%88%92%EF%BC%91&amp;t=m&amp;z=14&amp;ll=<%= @geometry["lat"] %>,<%= @geometry["lng"] %>&amp;output=embed"></iframe>
-<%# <style>
-#map{
-  height: 400px;
-}
-</style>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9DEE14qabfiZBdRWmD3wlYAzlKWh16KA&callback=initMap" async defer></script> %>
-
-                        <%# <%= render "restaurants/googlemap", restaurant: @restaurant  %>
+                        <div id='map'>
+                            <iframe width="700" height="420" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.jp/maps?f=q&amp;source=s_q&amp;hl=ja&amp;geocode=&amp;q=<%= @restaurant.restaurant_name %>&amp;aq=&amp;sll=35.975263,139.758453&amp;sspn=0.012763,0.027874&amp;brcurrent=3,0x6018beb343d20c51:0xf46ed726497237bd,0,0x6018beb35f1f38d7:0x6de0fd7e3d9ee138&amp;ie=UTF8&amp;hq=&amp;hnear=%E5%9F%BC%E7%8E%89%E7%9C%8C%E6%98%A5%E6%97%A5%E9%83%A8%E5%B8%82%E5%8D%97%EF%BC%91%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%94%E2%88%92%EF%BC%91&amp;t=m&amp;z=14&amp;ll=<%= @geometry["lat"] %>,<%= @geometry["lng"] %>&amp;output=embed"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
