@@ -21,10 +21,17 @@ class UsersController < ApplicationController
     def index
     end
 
+    def destroy
+        @user = User.find(params[:id])
+        @reservations = @user.reservations
+        @user.destroy
+        redirect_to user_path(@user.id)
+    end
+
     def show
         # @like = Like.find(params[:id])
         @user = User.find(params[:id])
-        @likes = @user.likes
+        # @likes = @user.likes
         @reservations = @user.reservations
     end
 

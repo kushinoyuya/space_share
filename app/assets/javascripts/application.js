@@ -79,14 +79,14 @@ $(document).ready(function(){
 });
 
 // 定休日複数選択
-$(document).ready(function() {
-$('.mySelect2').select2({
-    maximumSelectionLength: 3,
-    width: 300,
-    placeholder: 'This is my placeholder',
-    allowClear: true
-});
-});
+// $(document).ready(function() {
+// $('.mySelect2').select2({
+//     maximumSelectionLength: 3,
+//     width: 300,
+//     placeholder: 'This is my placeholder',
+//     allowClear: true
+// });
+// });
 
 $(function() {
     // datepicker表示イベント
@@ -120,3 +120,21 @@ $(document).ready(function(){
     });
 }
 );
+
+// 都道府県選択
+$(".select2.js").select2({
+    placeholder: "都道府県を選択",
+    multiple: true
+  });
+  $(".select2.js").select2({
+    placeholder: "都道府県を選択"
+  });
+
+
+
+
+$(function() {
+    // datepicker表示イベント
+    $('#rest_day').pickadate();
+    // timepicker表示イベント
+});

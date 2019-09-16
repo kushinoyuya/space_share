@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_131447) do
+ActiveRecord::Schema.define(version: 2019_09_16_111446) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_131447) do
     t.integer "payment", null: false
     t.string "restaurant_status", default: "", null: false
     t.string "usage_fee", default: "", null: false
+    t.string "usage_status", default: "", null: false
     t.datetime "use_start_time", null: false
     t.datetime "use_end_time", null: false
     t.string "usage_number", default: "", null: false
@@ -86,10 +87,10 @@ ActiveRecord::Schema.define(version: 2019_09_03_131447) do
     t.datetime "available_start_time", null: false
     t.datetime "available_end_time", null: false
     t.string "seat_number", default: "", null: false
-    t.string "usage_status", default: "", null: false
     t.datetime "rest_day", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "possible_day"
   end
 
   create_table "reviews", force: :cascade do |t|

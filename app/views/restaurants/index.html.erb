@@ -10,11 +10,11 @@
                 <div class="search-place col-sm-6">
                     <%= f.search_field :restaurant_name_or_facility_or_seat_number_cont_any, placeholder: "空きスペースを探す" %>
                 </div>
+
                 <%# 都道府県ソート %>
                 <div class="search-prefecture col-sm-6">
-                    <%= f.search_field :restaurant_address_or_prefecture_cont_any, placeholder: "エリアを入力する" %>
-                    <%# collect_selet実装予定 %>
-                </div><!-- 都道府県 -->
+                    <%= f.search_field :prefecture, placeholder: "エリアを選択してください", class: "select2 js" %>
+                </div>
 
                 <%# 検索ボタン %>
                 <div class="search-btn col-xs-12 text-center">
@@ -61,12 +61,15 @@
             <p></p>
             <h5 class="restaurant-index">
                 <!-- 利用可能時間 -->
-                <p><span class="glyphicon glyphicon-time"> 利用可能時間</span></p>
                 <p>
-                    利用開始時刻:<%= results.available_start_time.strftime('%Y年%m月%d日 %H時%M分') %>
+                    <span class="glyphicon glyphicon-time">利用開始時刻:<%= results.available_start_time.strftime('%Y年%m月%d日 %H時%M分') %></span>
                 </p>
                 <p>
-                    利用終了時刻:<%= results.available_end_time.strftime('%Y年%m月%d日 %H時%M分') %>
+                    <span class="glyphicon glyphicon-time">利用終了時刻:<%= results.available_end_time.strftime('%Y年%m月%d日 %H時%M分') %></span>
+                </p>
+                <p>
+                    <span class="glyphicon glyphicon-calendar">定休日:<%= results.rest_day %>
+                    </span>
                 </p>
 
             </h5>

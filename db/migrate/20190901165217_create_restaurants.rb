@@ -12,7 +12,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.timestamp :available_end_time, null: false, default: ""
       t.string :seat_number, null: false, default: ""
       # 画像ID（image_id）はActive_storageを使用
-      t.string :usage_status, null: false, default: ""
+
 
       t.timestamp :rest_day,  null: false, default: ""
 

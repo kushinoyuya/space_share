@@ -8,42 +8,44 @@ class ReservationsController < ApplicationController
         # ルーティングを調整
         @restaurant = Restaurant.find(params[:restaurant_id])
         # render :new
-
         # いらない
         # set_form_values
-
-
-
     end
 
     def create
         @reservation = Reservation.new(reservation_params)
         @reservation.user_id = current_user.id
-        @reservation.save
-        redirect_to root_path, :notice => "予約完了しました"
+        @restaurant = @reservation.restaurant
+        if @reservation.save
+            redirect_to restaurant_path(@restaurant)
+        else
+            render :new
+        end
     end
 
     def update
-
+        @reservation = Reservation.find(params[:id])
+        @reservation.update(reservation_params)
+        redirect_to user_path(current_user.id)
     end
 
     def index
-        @reservations = Reservation.all
-
+        # @reservations = Reservation.all
     end
 
     def destroy
+        user = current_user
         reservation = Reservation.find(params[:id])
         reservation.destroy
-        redirect_to reservations_path, :alert => "予約をキャンセルしました。"
+        redirect_to user_path(current_user)
     end
 
     def show
-
     end
 
     def edit
-
+        @reservation = Reservation.find(params[:id])
+        @user = current_user
     end
 
 

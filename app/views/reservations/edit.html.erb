@@ -1,0 +1,35 @@
+<%= render "layouts/setting" %>
+
+<div class="container-reservation-edit">
+    <div class="row">
+        <section id="reservation-edit">
+            <div class="container">
+                <div class="row">
+                    <div class="box">
+
+                        <h2 class="my-profile-title text-center">予約変更</h2>
+                        <%= form_for @reservation do |reservation| %>
+                        <div class="restaurant-name">
+                            <p><%= @reservation.restaurant.restaurant_name %></p>
+                        </div>
+
+                        <div class="fieldset__wrapper">
+                            <label> ■予約日　 </label></br>
+                            <%= reservation.text_field :usage_day, id:'use_day', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+                            <label> ■予約開始時間　</label></br>
+                            <%= reservation.text_field :use_start_time, id:'use_start_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+                            <label> ■予約終了時間　</label></br>
+                            <%= reservation.text_field :use_end_time, id:'use_end_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+                        </div>
+
+                        <div class="center-block btns">
+                            <%= reservation.submit "予約変更",class:"btn btn-default" %>
+                            <%= link_to "予約キャンセル",reservation_path(@reservation),method: :delete,class:"btn btn-danger" %>
+                        </div>
+                        <% end %>
+                    </div><%# box %>
+                </div><%# row %>
+            </div><%# container %>
+        </section>
+    </div>
+</div>

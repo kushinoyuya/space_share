@@ -4,7 +4,9 @@
 
         <!-- logoの表示 -->
         <div class="logo pull-left">
-            <%= image_tag "space-share.jpg", size:'70x70' %>
+            <%= link_to root_path, class: 'button-top' do %>
+                <%= image_tag "space-share.jpg", size:'70x70' %>
+            <% end %>
         </div>
 
 
@@ -33,12 +35,6 @@
         <%# Ownerログイン中 %>
         <% elsif owner_signed_in? %>
             <div class="login-status pull-right">
-                <!-- トップ画面画面に遷移する -->
-                <li class="nav-list">
-                    <div class="header-link">
-                        <%= link_to "top", root_path, :style=>"color:white;", class: 'button' %>
-                    </div>
-                </li>
                 <!-- 飲食店登録画面に遷移する -->
                 <li class="nav-list">
                     <div class="header-link">
@@ -75,13 +71,6 @@
                         </div>
                     </li>
             <% end %><%# current_page?(root_path) %>
-
-                    <!-- トップ画面画面に遷移する -->
-                    <li class="nav-list">
-                        <div class="header-link">
-                            <%= link_to "top", root_path, :style=>"color:white;", class: 'button' %>
-                        </div>
-                    </li>
 
                     <!-- 飲食店一覧画面に遷移する -->
                     <li class="nav-list">

@@ -3,7 +3,7 @@ class Restaurant < ApplicationRecord
     # アソシエーション
     has_many :likes
     has_many :reviews
-    has_many :reservations
+    has_many :reservations, dependent: :destroy
     # optional: trueはFKキーをNILL値で返せる（class:nillエラー対策）
     belongs_to :owner, optional: true
 
@@ -21,7 +21,7 @@ class Restaurant < ApplicationRecord
     福岡県:39,佐賀県:40,長崎県:41,熊本県:42,大分県:43,宮崎県:44,鹿児島県:45,沖縄県:46 }
 
     # 定休日の選択
-    enum rest_day: { 月:0,火:1,水:2,木:3,金:4,土:5,日:6 }
+    # enum rest_day: { 月:0,火:1,水:2,木:3,金:4,土:5,日:6 }
 
 
     # いいね機能
