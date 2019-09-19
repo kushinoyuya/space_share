@@ -3,9 +3,10 @@
 
 <div class="container">
     <div class="row">
-                <h1 class="restaurant-registration-title text-center">Restaurant Registration</h1>
+        <h1 class="restaurant-registration-title text-center">Restaurant Registration</h1>
         <div class="col-sm-6 col-sm-offset-3">
         <%= form_with(model: @restaurant, local:true) do |f| %>
+        <%= render "layouts/flash" %>
 
             <%# 店舗名 %>
             <div class="row form-box">
@@ -27,7 +28,7 @@
         <div class="row form-box">
             <label for="" class="text-center">■利用予定料金（1人/1時間当たり）</label>
             <div class="form">
-                <%= f.text_field :scheduled_usage_fee, class: "form-control", placeholder: "料金を設定してください" %>
+                <%= f.text_field :scheduled_usage_fee, class: "form-control text-center", placeholder: "料金を設定してください" %>
             </div>
         </div>
 
@@ -35,67 +36,67 @@
         <div class="row for-m-box">
             <label for="" class="text-center">■設備</label>
             <div class="form">
-                <%= f.text_field :facility, class: "form-control", placeholder: "設備を入力してください" %>
+                <%= f.text_field :facility, class: "form-control text-center", placeholder: "設備を入力してください" %>
             </div>
         </div>
 
         <%# 利用可能時間 %>
-        <div class="section__block section__block--scoped">
-            <fieldset class="fieldset fieldset--demo">
-                <div class="fieldset__wrapper">
-                    <label> ■利用可能日 </label>
-                    <%= f.text_field :possible_day, id:'use_day', class:"form-control fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
-                    <label> ■利用可能開始時間　</label></br>
-                    <%= f.text_field :available_start_time, id:'use_start_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
-                    <label> ■利用可能終了時間　</label></br>
-                    <%= f.text_field :available_end_time, id:'use_end_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
-                </div>
-            </fieldset>
+        <div class="row form-box">
+            <label for="" class="text-center">■利用可能日</label>
+            <div class="form">
+                <%= f.text_field :possible_day, id:'use_day', class:"fieldset__input js__datepicker text-center", placeholder:"日付を選択してください" %></br></br>
+            </div>
+        </div>
+        <div class="row form-box">
+            <label for="" class="text-center">■利用可能開始時間</label>
+            <div class="form">
+                <%= f.text_field :available_start_time, id:'use_start_time', class:"form_control fieldset__input js__datepicker text-center", placeholder:"時間を指定してください" %></br></br>
+            </div>
+        </div>
+        <div class="row form-box">
+            <label for="">■利用可能終了時間</label>
+            <div class="form" class="text-center">
+                <%= f.text_field :available_end_time, id:'use_end_time', class:"form_control fieldset__input js__datepicker text-center", placeholder:"時間を指定してください" %></br></br>
+            </div>
         </div>
 
         <%# 定休日です %>
         <div class="row form-box">
-            <div class="col-sm-2">
-                <label> ■定休日 </label></br>
-                <%= f.text_field :rest_day, id:'rest_day', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %>
+            <label class="text-center"> ■定休日 </label></br>
+            <div class="form">
+                <%= f.text_field :rest_day, id:'rest_day', class:"form_control fieldset__input js__datepicker text-center", placeholder:"定休日を指定してください" %>
             </div>
         </div>
 
 
         <%# 住所 %>
         <div class="row form-box">
-            <div class="col-sm-2">
-                <label for="">■住所</label>
-            </div>
-            <div class="col-sm-10">
-                <%= f.text_field :restaurant_address, class: "form-control", placeholder: "住所を入力してください" %>
+            <label for="" class="text-center">■住所</label>
+            <div class="form">
+                <%= f.text_field :restaurant_address, class: "form-control text-center", placeholder: "住所を入力してください" %>
             </div>
         </div>
 
         <%# 座席数 %>
         <div class="row form-box">
-            <div class="col-sm-2">
-                <label for="">■座席数</label>
-            </div>
-            <div class="col-sm-10">
-                <%= f.select :seat_number, options_for_select((1..20).to_a), {}, class: "form-control", :style=>"width:50px;display:inline-block;margin-top:20px;" %>
+            <label for="" class="text-center">■座席数</label>
+            <div class="form">
+                <%= f.select :seat_number, options_for_select((1..30).to_a), {}, class: "form-control"  %>
             </div>
         </div>
 
         <%# 都道府県 %>
         <div class="row form-box">
-            <div class="col-sm-2">
-                <label for="">■都道府県</label>
-            </div>
-            <div class="col-sm-10">
-                <%= f.select :prefecture, Restaurant.prefectures.keys, {}, class: "form-control", :style=>"width:50px;display:inline-block;margin-top:20px;" %>
+            <label for="" class="text-center">■都道府県</label>
+            <div class="form">
+                <%= f.select :prefecture, Restaurant.prefectures.keys, {}, class: "form-control" %>
             </div>
         </div>
 
         <%# 登録ボタン %>
         <div class="row form-box">
             <div class="col-sm-12" style="text-align:center";>
-                <%= f.submit "Update", class: "btn btn-default", :style=>"width: 80px;" %>
+                <%= f.submit "登録", class: "btn btn-default", :style=>"width: 80px; margin-top:20px;" %>
             </div>
         </div>
 

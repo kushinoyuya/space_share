@@ -13,11 +13,18 @@ class ReservationsController < ApplicationController
     end
 
     def create
+        # binding.pry
+        # reservation_paramsが空の値があればリダイレクト
+        # if @reservation.blank?
+        #     redirect_to new_reservation_path(@reservation)
+        #     flash.now[:alert] = "未入力の情報があります。もう一度確認してください。"
+        # end
         @reservation = Reservation.new(reservation_params)
         @reservation.user_id = current_user.id
         @restaurant = @reservation.restaurant
         if @reservation.save
             redirect_to restaurant_path(@restaurant)
+            flash[:notice] = "登録しました"
         else
             render :new
         end

@@ -17,9 +17,9 @@
 //= require jquery
 //= require bootstrap-sprockets
 
-//= require pickadate/picker
-//= require pickadate/picker.date
-//= require pickadate/picker.time
+// = require pickadate/picker
+// = require pickadate/picker.date
+// = require pickadate/picker.time
 
 //= require select2
 //= require_tree .
@@ -88,7 +88,7 @@ $(document).ready(function(){
 // });
 // });
 
-$(function() {
+$(document).ready(function() {
     // datepicker表示イベント
     $('#use_day').pickadate();
     // timepicker表示イベント

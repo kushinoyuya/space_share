@@ -17,7 +17,7 @@
                 <!-- 飲食店一覧画面に遷移する -->
                 <li class="nav-list">
                     <div class="header-link">
-                        <%= link_to "Index", restaurants_path, :style=>"color:white;", class: 'button' %>
+                        <%= link_to "shared spaces", restaurants_path, :style=>"color:white;", class: 'button' %>
                     </div>
                 </li>
                 <!-- ユーザー詳細画面に遷移する -->
@@ -27,18 +27,22 @@
                     </div>
                 </li>
                 <span class="glyphicon glyphicon-user" style="margin-right:10px;" ></span>
-                <span style="color:#ac177c;"><%= current_user.last_name %></span>さん<br>
-                ログイン中<br>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <span style="color:#851900;"><%= current_user.last_name %></span>さん<br>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-danger btn-sm" %>
             </div>
 
         <%# Ownerログイン中 %>
         <% elsif owner_signed_in? %>
             <div class="login-status pull-right">
+                <li class="nav-list">
+                    <div class="header-link">
+                        <%= link_to "shared spaces", restaurants_path, :style=>"color:white;", class: 'button' %>
+                    </div>
+                </li>
                 <!-- 飲食店登録画面に遷移する -->
                 <li class="nav-list">
                     <div class="header-link">
-                        <%= link_to "restaurant", new_restaurant_path, :style=>"color:white;", class: 'button' %>
+                        <%= link_to "registration", new_restaurant_path, :style=>"color:white;", class: 'button' %>
                     </div>
                 </li>
                 <!-- オーナー詳細画面に遷移する -->
@@ -49,8 +53,7 @@
                 </li>
                 <span class="glyphicon glyphicon-user" style="margin-right:10px;" ></span>
                 <span style="color:#ac177c;"><%= current_owner.last_name %></span>さん<br>
-                ログイン中<br>
-                <%= link_to "ログアウト", destroy_owner_session_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_owner_session_path, method: :delete, class:"btn btn-danger btn-sm"  %>
             </div>
 
 
@@ -75,7 +78,7 @@
                     <!-- 飲食店一覧画面に遷移する -->
                     <li class="nav-list">
                         <div class="header-link">
-                            <%= link_to "Index", restaurants_path, :style=>"color:white;", class: 'button' %>
+                            <%= link_to "shared spaces", restaurants_path, :style=>"color:white;", class: 'button' %>
                         </div>
                     </li>
 

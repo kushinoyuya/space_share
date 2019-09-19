@@ -35,10 +35,7 @@
                                 <p class="restaurant-show">
                                     <span class="glyphicon glyphicon-time"> 利用可能時間</span>
                                     <p>
-                                        開始時間:<span><%= @restaurant.available_start_time.strftime('%Y年%m月%d日 %H時%M分') %></span>
-                                    </p>
-                                    <p>
-                                        終了時間:<span><%= @restaurant.available_end_time.strftime('%Y年%m月%d日 %H時%M分') %></span>
+                                        <span><%= @restaurant.available_start_time.strftime('%Y年%m月%d日 %H時%M分') %></span>〜<span><%= @restaurant.available_end_time.strftime('%Y年%m月%d日 %H時%M分') %></span>
                                     </p>
                                 </p>
 

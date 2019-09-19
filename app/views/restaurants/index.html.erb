@@ -3,24 +3,16 @@
 <div class="container"><!-- 検索フィールド -->
     <div class="row">
         <h1 class="search-title text-center">Search for Space!</h1>
-
         <div class="search-wrapper">
             <%= search_form_for @search, url: restaurants_path do |f| %>
                 <%# 店舗-検索 %>
-                <div class="search-place col-sm-6">
-                    <%= f.search_field :restaurant_name_or_facility_or_seat_number_cont_any, placeholder: "空きスペースを探す" %>
+                <div class="search-place glyphicon glyphicon-search">
+                    <%= f.search_field :restaurant_name_or_facility_or_seat_number_cont_any, placeholder: "店名で探す"%>
                 </div>
-
-                <%# 都道府県ソート %>
-                <div class="search-prefecture col-sm-6">
-                    <%= f.search_field :prefecture, placeholder: "エリアを選択してください", class: "select2 js" %>
-                </div>
-
                 <%# 検索ボタン %>
-                <div class="search-btn col-xs-12 text-center">
-                    <button class="search-icon"><span><%= f.submit "検索" %></span></button>
+                <div class="search-btn">
+                    <button class="search-icon"><span><%= f.submit "Search" %></span></button>
                 </div>
-
             <% end %>
         </div>
     </div><!-- row -->
@@ -67,10 +59,11 @@
                 <p>
                     <span class="glyphicon glyphicon-time">利用終了時刻:<%= results.available_end_time.strftime('%Y年%m月%d日 %H時%M分') %></span>
                 </p>
-                <p>
-                    <span class="glyphicon glyphicon-calendar">定休日:<%= results.rest_day %>
-                    </span>
-                </p>
+                <%# <p>
+                    <span class="glyphicon glyphicon-calendar">定休日: %>
+                    <%#= results.rest_day %>
+                    <%# </span>
+                </p> %>
 
             </h5>
             <p></p>
@@ -82,7 +75,6 @@
             </strong>
                 <p></p>
 
-                <%# カレンダー実装予定 %>
 
 
                 <!-- 店舗詳細リンク -->
@@ -95,13 +87,6 @@
 </div><!-- container -->
 <% end %><!-- resultsのEND -->
 
-
-<div class="container">
-    <div class="row">
-        <!-- ページネイション -->
-        <div class="col-xs-12 col-sm-12 text-center"><%= paginate @results %></div>
-    </div>
-</div>
 
 <% else %><!-- result.anyにヒットしなかった場合 -->
 <div class="container">

@@ -11,14 +11,13 @@ class RestaurantsController < ApplicationController
     end
 
     def create
-        puts params
-        puts"--------------------------"
         @restaurant = Restaurant.new(restaurant_params)
         @restaurant.owner_id = current_owner.id
         if @restaurant.save
-            redirect_to owner_path(current_owner), :notice => "登録しました"
+            redirect_to owner_path(current_owner)
+            flash[:notice] = "登録しました"
         else
-            flash.now[:alert] = "登録に失敗しました"
+            flash.now[:alert] = "登録に失敗しました。 入力内容を確認してください。"
             @restaurant = Restaurant.new
             render :new
         end
@@ -27,7 +26,7 @@ class RestaurantsController < ApplicationController
     def update
         @restaurant = Restaurant.find(params[:id])
         if @restaurant.update(restaurant_params)
-            redirect_to restaurants_path, :notice => "更新できました"
+            redirect_to restaurants_path, flash[:notice] = "更新できました"
         else
             flash.now[:alert] = "入力内容を確認してください"
             render :new
@@ -38,7 +37,7 @@ class RestaurantsController < ApplicationController
         # 飲食店一覧画面、検索フォーム
         # include内は複数形
         @search = Restaurant.includes(:reservations).ransack(params[:q])
-        @results = @search.result(distinct: true).order(rastaurant_order: "DESC").page(params[:page]).per(9)
+        @results = @search.result(distinct: true).order(rastaurant_order: "DESC")
     end
 
     def show

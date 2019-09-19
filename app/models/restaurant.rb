@@ -9,6 +9,29 @@ class Restaurant < ApplicationRecord
 
     # 画像ID（image_id）はActive_storageを使用
     has_many_attached :images
+    default_scope -> { order ("id DESC")}
+
+    # レストラン登録機能バリデーション
+    validates :restaurant_name, presence: true
+    validates :scheduled_usage_fee, presence: true
+    validates :facility, presence: true
+    validates :possible_day, presence: true
+    validates :available_start_time, presence: true
+    validates :available_end_time, presence: true
+    validates :rest_day, presence: true
+    validates :restaurant_address, presence: true
+    validates :seat_number, presence: true
+    validates :prefecture, presence: true
+
+    # アクティブストレージバリデーション
+    validate :images_presence
+    def images_presence
+        if images.attached?
+        else
+            errors.add(:image, 'ファイルを添付してください')
+        end
+    end
+
 
     # 都道府県の選択
     enum prefecture: { 北海道:0,青森県:1,岩手県:2,宮城県:3,秋田県:4,山形県:5,福島県:6,

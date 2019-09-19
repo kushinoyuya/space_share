@@ -6,94 +6,97 @@
         <h1 class="reservation-registration-title text-center">予約登録画面</h1>
         <%# エラーメッセージ表示 %>
         <%= render "layouts/error" ,model: @reservation %>
-        <div class="box text-center">
+        <%#= render "layouts/flash" %>
+
+        <div class="col-sm-6 col-sm-offset-3">
             <%= form_with(model: @reservation, local:true) do |f| %>
-        </div>
-
-        <%# 店舗名 %>
-        <div class="row form-box">
-            <div class="col-sm-2">
-                <label for="">■店舗名</label>
+            <%# 店舗名 %>
+            <div class="row form-box">
+                <label for="" class="text-center">■店舗名</label>
+                <div class="form">
+                    <p style="color:#5f3ce3;"><strong><%= @restaurant.restaurant_name %></strong></p>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <%= @restaurant.restaurant_name %>
+
+            <%# 利用日
+            <div class="row form-box">
+                <label for="" class="text-center">■利用日</label>
+                <div class="form">
+
+                </div>
+            </div> %>
+
+            <%# 予約日 %>
+            <div class="row form-box">
+                <label for="" class="text-center">■予約日</label>
+                <div class="form">
+                    <%= f.text_field :usage_day, id:'use_day', class:"fieldset__input js__datepicker text-center", placeholder:"予約日を指定してください" %></br></br>
+                </div>
             </div>
-        </div>
 
-        <%# 利用日 %>
-        <div class="row">
-            <div class="col-xs-2">
-                <label for="">■利用日</label>
+            <%# 予約開始時間 %>
+            <div class="row form-box">
+                <label for="" class="text-center">■予約開始時間</label>
+                <div class="form">
+                    <%= f.text_field :use_start_time, id:'use_start_time', class:"fieldset__input js__datepicker text-center", placeholder:"開始時刻を指定してください" %></br></br>
+                </div>
             </div>
-            <div class="col-sm-10">
 
+            <%# 予約終了時間 %>
+            <div class="row form-box">
+                <label for="" class="text-centter">■予約終了時間</label>
+                <div class="form">
+                    <%= f.text_field :use_end_time, id:'use_end_time', class:"fieldset__input js__datepicker text-center", placeholder:"終了時刻を指定してください" %></br></br>
+                </div>
             </div>
-        </div>
 
 
-<%# 利用時間 %>
-<div class="section__block section__block--scoped">
-    <h3>利用時間</h3>
-    <fieldset class="fieldset fieldset--demo">
-        <div class="fieldset__wrapper">
-            <label> ■予約日　 </label></br>
-            <%= f.text_field :usage_day, id:'use_day', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
-            <label> ■予約開始時間　</label></br>
-            <%= f.text_field :use_start_time, id:'use_start_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
-            <label> ■予約終了時間　</label></br>
-            <%= f.text_field :use_end_time, id:'use_end_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
-        </div>
-    </fieldset>
-</div>
+            <%# 利用人数 %>
+            <div class="row form-box">
+                <label for="" class="text-center">■利用人数</label>
+                <div class="form">
+                    <%= f.select :usage_number, options_for_select((1..20).to_a), {}, class: "form-control" %>
+                </div>
+            </div>
 
+            <%# 支払方法 %>
+            <div class="row form-box">
+                <label for="" class="text-center">■お支払方法</label>
+                <p>銀行振込・代引き・クレジットカードを選択できます。</p>
+                <div class="box-radius">
+                    <label style="margin-right:70px;"><%= f.radio_button :payment, '現地払い', :checked=>"checked",:onclick=>"payBtnClose()" %>現地払い</label>
+                    <label style="margin-right:70px;"><%= f.radio_button :payment, '銀行振込',:onclick=>"payBtnClose()" %>銀行振込</label>
+                    <label style="margin-right:70px;"><%= f.radio_button :payment, 'クレジットカード', class:"pay-check" ,:onclick=>"payBtnOpen()" %>クレジットカード</label>
+                </div>
+            </div>
 
-
-        <%# 利用人数 %>
-        <h3>利用人数</h3>
-        <label style="margin-right:70px;">
-            <%= f.select :usage_number, options_for_select((1..20).to_a), {}, class: "form-control", :style=>"width:50px;display:inline-block;margin-top:20px;" %>
-        </label>
-        <%# 支払方法 %>
-        <h3>お支払方法</h3>
-        <p>銀行振込・代引き・クレジットカードを選択できます。</p>
-        <div class="box-radius">
-            <label style="margin-right:70px;"><%= f.radio_button :payment, '現地払い', :checked=>"checked",:onclick=>"payBtnClose()" %>現地払い</label>
-            <label style="margin-right:70px;"><%= f.radio_button :payment, '銀行振込',:onclick=>"payBtnClose()" %>銀行振込</label>
-            <label style="margin-right:70px;"><%= f.radio_button :payment, 'クレジットカード', class:"pay-check" ,:onclick=>"payBtnOpen()" %>クレジットカード</label>
-        </div>
-
-
-        <p></p>
-
-        <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
-
-        <%# 予約確定ボタン %>
-        <div class="reservation-btn">
-            <%= f.submit "予約確定" ,class:"btn btn-primary btn-lg" %>
-        </div>
-        <% end %>
-
+            <div class="row form-box">
+                <%# hidden_fieldで情報を受け渡す %>
+                <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+                <%= f.submit "予約確定" ,class:"btn btn-primary btn-lg" %>
+            </div>
+            <% end %>
 
         <%# pay.jp %>
-        <div id="pay">
-            <p class="pay-text">下記のボタンを押して、カード情報を入力してください</p>
+        <div class="row form-box">
+            <div id="pay">
+            <p class="pay-text">※支払金額とカード情報を入力してください</p>
                 <%# <form action="/reservations/pay" method="post">%>
                 <%= form_with(local: true,url: pay_reservations_path, id: "charge-form") do |pay| %>
-                金額：<%= pay.text_field :amount %>
-                <script
-                    type="text/javascript"
-                    src="https://checkout.pay.jp"
-                    class="payjp-button"
-                    data-key="<%= ENV["PAYJP_PUBLIC_KEY"] %>">
-                </script>
+                <label for="" class="text-center">■支払金額</label>
+                <div class="box"><%= pay.text_field :amount %></div>
+                <div class="box">
+                    <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="<%= ENV["PAYJP_PUBLIC_KEY"] %>"></script>
+                </div>
                 <% end %>
+            </div><%# id=pay %>
         </div>
 
-
-
-
+        </div><%# col-sm-6 col-sm-offset-3 %>
     </div><%# row %>
 </div><%# container %>
+
+
 
 <%# pay.jp表示関数 %>
 <script>

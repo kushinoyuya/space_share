@@ -1,24 +1,30 @@
-# README
+Name
+Space Share
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Overview
 
-Things you may want to cover:
+## Description
+<img src="assets/images/space-share.jpg" alt="space share">
+お店の営業時間外にオーナー (店主)が店のスペースを貸し出すシステム
+都内にあるショットバー、ダイニングバーなどの営業時間は夜間営業が多く日中帯はスペースが空いていることがある。
+そこで、営業時間外のお店の空きスペースを会議や勉強会で使用したいユーザーをつなぐサービスを作成する。
 
-* Ruby version
+## Demo
 
-* System dependencies
+## VS. 
 
-* Configuration
+## Requirement
 
-* Database creation
+## Usage
 
-* Database initialization
+## Install
 
-* How to run the test suite
+## Contribution
 
-* Services (job queues, cache servers, search engines, etc.)
+## Licence
 
-* Deployment instructions
+[MIT]()
 
-* ...
+## Author
+
+[tcnksm]()
