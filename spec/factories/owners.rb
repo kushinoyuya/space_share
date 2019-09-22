@@ -5,8 +5,8 @@ FactoryBot.define do
       sequence(:first_name) {|n| "first_name#{n}" }
       sequence(:last_kana) {|n| "last_kana#{n}" }
       sequence(:first_kana) {|n| "first_kana#{n}" }
-      phone_number { '0120111222' }
-      password { 'hogehoge' }
+      phone_number { Faker::Base.regexify(/0[0-9]{9,10}/) }
+      password { Faker::Internet.password }
       password_confirmation { password }
 
       trait :no_last_name do
