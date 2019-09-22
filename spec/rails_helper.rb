@@ -31,6 +31,17 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+
+  # paperclip file uploadテスト用
+  # rspec内で、ファイルアップロードのテストに使用する
+  config.include ActionDispatch::TestProcess
+
+  # factoryGirl内での呼び出し
+  FactoryBot::SyntaxRunner.class_eval do
+    include ActionDispatch::TestProcess
+  end
+
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

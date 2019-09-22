@@ -23,7 +23,7 @@ class Reservation < ApplicationRecord
     def timeout
         #binding.pry
         begin
-            if use_end_time < use_start_time
+            if use_end_time.present? && use_start_time.present? && use_end_time < use_start_time
                 # if [use_end_time, use_start_time].compact.max == use_start_time
                 errors.add(:use_start_time, ": 正しい予約時間を入力してください")
                 # else

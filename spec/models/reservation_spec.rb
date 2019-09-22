@@ -18,7 +18,8 @@ RSpec.describe Reservation, "モデルに関するテスト", type: :model do
         it "user_idを入れて保存" do
           user = FactoryBot.create(:user)
           restaurant = FactoryBot.create(:restaurant)
-          expect(FactoryBot.create(:reservation, user_id: user.id, restaurant: restaurant)).to be_valid
+          # buildでセーブ直前で止める
+          expect(FactoryBot.build(:reservation, user_id: user.id, restaurant: restaurant)).to be_valid
         end
       end
 

@@ -5,7 +5,7 @@ class Restaurant < ApplicationRecord
     has_many :reviews
     has_many :reservations, dependent: :destroy
     # optional: trueはFKキーをNILL値で返せる（class:nillエラー対策）
-    belongs_to :owner, optional: true
+    belongs_to :owner
 
     # 画像ID（image_id）はActive_storageを使用
     has_many_attached :images
