@@ -106,3 +106,8 @@ gem 'pickadate-rails'
 gem 'dotenv-rails'
 # googlemap
 gem 'geocoder'
+
+# デプロイ変更
+group :production do
+  gem 'mysql2'
+end
