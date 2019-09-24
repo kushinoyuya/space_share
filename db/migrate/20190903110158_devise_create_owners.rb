@@ -4,8 +4,8 @@ class DeviseCreateOwners < ActiveRecord::Migration[5.2]
   def change
     create_table :owners do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false
+      t.string :encrypted_password, null: false
 
       ## Recoverable
       t.string   :reset_password_token
@@ -32,14 +32,14 @@ class DeviseCreateOwners < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.string :last_name, null: false, default: ""
-      t.string :first_name, null: false, default: ""
-      t.string :last_kana, null: false, default: ""
-      t.string :first_kana, null: false, default: ""
-      # t.string :postal_code, null: false, default: ""
-      # t.string :address, null: false, default: ""
-      t.string :phone_number, null: false, default: ""
-      t.timestamps null: false, null: false, default: ""
+      t.string :last_name, null: false
+      t.string :first_name, null: false
+      t.string :last_kana, null: false
+      t.string :first_kana, null: false
+      # t.string :postal_code, null: false
+      # t.string :address, null: false
+      t.string :phone_number, null: false
+      t.timestamps null: false, null: false
 
 
       t.timestamps null: false
