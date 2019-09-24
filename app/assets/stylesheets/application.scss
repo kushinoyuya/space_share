@@ -11,7 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
- *= require_tree ../../../vendor/assets/stylesheets/.
 *= require select2
  *= require_self
  */
@@ -70,7 +69,7 @@
 }
 // slick実装
 .main-visual{
-    background-image: url(image3.jpg);
+    background-image: asset-url("image3.jpg");
     background-size: cover;
     height: 700px;
     background-position: center;/*背景画像を中央に配置*/
@@ -89,13 +88,13 @@
 }
 
 .main-visual-2{
-    background-image: url(image1.jpg);
+    background-image: asset-url("image1.jpg");
     background-size: cover;
     height: 700px;
     background-position: center;/*背景画像を中央に配置*/
 }
 .main-visual-3{
-    background-image: url(image4.jpg);
+    background-image: asset-url("image4.jpg");
     background-size: cover;
     height: 700px;
     background-position: center;/*背景画像を中央に配置*/
@@ -205,7 +204,7 @@ footer{
 
 body{
 	background-color:black;
-	background-image:url('image6.jpg');
+	background-image:asset-url('image6.jpg');
 	background-attachment: fixed;
 	background-size: cover;
 }

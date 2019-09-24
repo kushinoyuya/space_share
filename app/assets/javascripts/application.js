@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
 //= require jquery.slick
 //= require activestorage
 
-//= require jquery
 //= require bootstrap-sprockets
 
 // = require pickadate/picker
