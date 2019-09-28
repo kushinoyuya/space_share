@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Restaurants", type: :feature do
   # pending "add some scenarios (or delete) #{__FILE__}"
   before do
-    @user1 = Factory.create(:user :create_with_reservations :create_eith_reviews)
+    @user1 = FactoryBot.create(:user, :create_with_reservations, :create_with_reviews)
     @owner1 = FactoryBot.create(:owner, :create_with_restaurants)
   end
 
@@ -23,7 +23,7 @@ RSpec.feature "Restaurants", type: :feature do
         find_field('restaurant[rest_day]').set('2019-10-31 19:28:13')
         find_field('restaurant[restaurant_address]').set('神南101')
         find_field('restaurant[seat_number]').set('seat_number')
-        select "埼玉県", from: 'reservation[payment]'
+        select "埼玉県", from: 'reservation[prefecture]'
         find("input[name='commit']").click
       end
       scenario "restaurantが更新されているか" do
@@ -93,7 +93,7 @@ RSpec.feature "Restaurants", type: :feature do
   end
 
 
-  feature "ログインしていな状態で" do
+  feature "ログインしていない状態で" do
     scenario "restaurantの一覧ページの表示内容とリンクは正しいか" do
       visit restaurants_path
     end
