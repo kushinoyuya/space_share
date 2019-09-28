@@ -92,7 +92,6 @@ Review.create!(
 Reservation.create!(
     user_id: "1",
     restaurant_id: "1",
-    restaurant_status: "予約中",
     usage_fee: "10000",
     use_start_time: "2019-09-02 15:00:15",
     use_end_time: "2019-09-02 17:00:15",
