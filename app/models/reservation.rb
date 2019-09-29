@@ -17,7 +17,7 @@ class Reservation < ApplicationRecord
     # バリデーション定義(自作の場合は単数)
     validate :timeout
     validate :dayout
-    validate :total_usage_number
+    # validate :total_usage_number
     validate :seat_number
     # validate :seat_number, :numericality => { :greater_than_or_equal_to => 0 }
 
@@ -43,14 +43,14 @@ class Reservation < ApplicationRecord
     end
 
     def total_usage_number
-        restaurant.reservations.where(usage_day: usage_day).sum(:usage_number) + usage_number
+        restaurant.reservations.where(usage_day: usage_day).sum(:usage_number) + self.usage_number
         # restaurant.reservations.where(usage_day: usage_day).inject(seat_number) { |sum, reservation| sum + reservation.seat_number }
     end
 
     # seat_number < (予約席+今回の予約人数) =>error
     def seat_number
         if restaurant.seat_number.to_i < total_usage_number.to_i
-            errors.add(:seat_number, ": 予約できません")
+            errors.add(:seat_number, ": 予約できません#{self.usage_number},#{total_usage_number}")
         end
     end
 
