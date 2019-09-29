@@ -43,9 +43,7 @@ class Reservation < ApplicationRecord
     end
 
     def total_usage_number
-        total = restaurant.reservations.where(usage_day: usage_day).inject(seat_number) { |sum, reservation| sum + reservation.seat_number }
-        print total
-        return total
+        restaurant.reservations.where(usage_day: usage_day).sum(:usage_number) + usage_number
         # restaurant.reservations.where(usage_day: usage_day).inject(seat_number) { |sum, reservation| sum + reservation.seat_number }
     end
 
