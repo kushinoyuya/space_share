@@ -1,5 +1,8 @@
 # Space Share
 
+![alt](https://user-images.githubusercontent.com/51279702/65826648-006b2500-e2c4-11e9-9ad6-3aa84920356c.png)
+
+
 お店の営業時間外にオーナー (店主)が店のスペースを貸し出すシステム
 都内にあるショットバー、ダイニングバーなどの営業時間は夜間営業が多く日中帯はスペースが空いていることがある。
 そこで、営業時間外のお店の空きスペースを会議や勉強会で使用したいユーザーをつなぐサービスを作成した。
@@ -19,18 +22,20 @@
 * 複数の画像投稿ができる
 
 # 利用技術
-* 言語
-Ruby
-* フレームワーク
-Ruby On Rails
-* パッケージ
-devise（ユーザー情報登録）
-ransack（検索機能）
-‘refile’, require: “refile/rails”, github: ‘manfe/refile’
-refile-mini_magick（画像投稿機能）active_storage
-bootstrap-sass（ブートストラップ機能実装）
-jquery-rails（jquery実装）
-Pay.jp（決済機能の導入）
-Google Map API
-Faker
-* AWS（EC2、RDS、EIP）
+### 1. 言語
+- Ruby  
+### 2. フレームワーク
+- Ruby On Rails
+### 3. テスト
+- Rspec
+### 4. パッケージ
+- devise（ユーザー情報登録）
+- ransack（検索機能）
+- ‘refile’, require: “refile/rails”, github: ‘manfe/refile’
+- refile-mini_magick（画像投稿機能）active_storage
+- bootstrap-sass（ブートストラップ機能実装）
+- jquery-rails（jquery実装）
+- Pay.jp（決済機能の導入）
+- Google Map API
+- Faker
+### 4. AWS（EC2、RDS、EIP）

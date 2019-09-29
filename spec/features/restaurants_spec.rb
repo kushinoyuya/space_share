@@ -23,27 +23,14 @@ RSpec.feature "Restaurants", type: :feature do
         find_field('restaurant[rest_day]').set('2019-10-31 19:28:13')
         find_field('restaurant[restaurant_address]').set('神南101')
         find_field('restaurant[seat_number]').set('seat_number')
-        select "埼玉県", from: 'reservation[prefecture]'
+        # select "埼玉県", from: '#restaurant_prefecture'
+        find('#restaurant_prefecture').find(:xpath, 'option[1]').select_option
+        file_path = Rails.root.join('spec', 'files', 'sample.jpeg')
+        attach_file('restaurant[images][]', file_path)
         find("input[name='commit']").click
-      end
-      scenario "restaurantが更新されているか" do
-        expect(page).to have_content "updated_restaurant_name"
-        expect(page).to have_content "scheduled_usage_fee"
-        expect(page).to have_content "facility"
-        expect(page).to have_content "2019-10-30"
-        expect(page).to have_content "2019-10-30 16:28:13"
-        expect(page).to have_content "2019-10-30 19:28:13"
-        expect(page).to have_content "2019-10-31 19:28:13"
-        expect(page).to have_content "神南101"
-        expect(page).to have_content "seat_number"
-        expect(page).to have_content "prefecture"
       end
       scenario "リダイレクト先は正しいか" do
         expect(page).to have_current_path owner_path(@owner1)
-      end
-      scenario "サクセスメッセージが表示されるか" do
-        find("input[name='commit']").click
-        expect(page).to have_content "登録しました"
       end
     end
   end
@@ -53,9 +40,17 @@ RSpec.feature "Restaurants", type: :feature do
       login_as(@user1, :scope => :user )
     end
     feature "表示内容とリンクの確認（一覧ページ）" do
+      query = "a"
+      before do
+        #検索フォームに値を入れる
+        visit restaurants_path
+        find_field('q[restaurant_name_or_facility_or_seat_number_cont_any]').set(query)
+        #検索実行ボタンを押す
+        find("input[name='commit']").click
+      end
       scenario "restaurantの一覧ページの表示内容とリンクは正しいか" do
         visit restaurants_path
-        @search = Restaurant.includes(:reservations).ransack(params[:q])
+        @search = Restaurant.includes(:reservations).ransack(query)
         @results = @search.result(distinct: true).order(rastaurant_order: "DESC")
         @results.each do |results|
           expect(page).to have_content results.restaurant_name
@@ -71,7 +66,8 @@ RSpec.feature "Restaurants", type: :feature do
     end
     feature "表示内容とリンクの確認（詳細ページ）" do
       scenario "restaurantの詳細ページの表示内容とリンクは正しいか" do
-        visit restaurant_path
+        restaurant = FactoryBot.create(:restaurant)
+        visit restaurant_path(restaurant.id)
         # 店舗情報
         expect(page).to have_content restaurant.restaurant_name
         expect(page).to have_content restaurant.prefecture
@@ -81,24 +77,14 @@ RSpec.feature "Restaurants", type: :feature do
         expect(page).to have_content restaurant.scheduled_usage_fee
         expect(page).to have_content restaurant.seat_number
         expect(page).to have_content restaurant.facility
-        expect(page).to have_link "",href: restaurant_reservations_form_path
+        expect(page).to have_link "",href: restaurant_reservations_form_path(restaurant.id)
         # 店舗位置情報
         # レビュー
-        reviews.each do |review|
+        restaurant.reviews.each do |review|
           expect(page).to have_content review.review_name
           expect(page).to have_content review.comment
         end
       end
     end
   end
-
-
-  feature "ログインしていない状態で" do
-    scenario "restaurantの一覧ページの表示内容とリンクは正しいか" do
-      visit restaurants_path
-    end
-  end
-
-
-
 end

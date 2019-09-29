@@ -7,6 +7,7 @@ FactoryBot.define do
     sequence(:first_kana) {|n| "first_kana#{n}" }
     # sequence(:phone_number) {|n| "phone_number#{n}" }
     phone_number { Faker::Base.regexify(/0[0-9]{9,10}/) }
+    # email { Faker::Internet.email }
     password { Faker::Internet.password }
     password_confirmation { password }
 
@@ -69,6 +70,7 @@ FactoryBot.define do
       email {}
     end
     # メールアドレス【***@***.***】の形で入力バリデーション
+
 
 
 
