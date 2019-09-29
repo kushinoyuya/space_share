@@ -5,16 +5,6 @@
       <h2 class="text-center">ユーザーログイン画面</h2>
       <div class="box">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="row form-group name-form">
-          <div class="text-center">
-            <%= f.label :氏名 %>
-            <em>※必須項目</em>
-          </div>
-          <div class="text-center form name-form">
-            <%= f.text_field :last_name, :size=>"25", autofocus: true, class:"form-inline", placeholder:"姓" %>
-            <%= f.text_field :first_name, :size=>"25", autofocus: true, class:"form-inline", placeholder:"名"%>
-          </div>
-        </div>
     <p></p><%# 間隔調整 %>
 
 
