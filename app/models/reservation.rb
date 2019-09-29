@@ -20,10 +20,12 @@ class Reservation < ApplicationRecord
     # validate :total_usage_number
     validate :seat_number
     # validate :seat_number, :numericality => { :greater_than_or_equal_to => 0 }
+    validate :invalidtime
 
     # 開始と終了の時間が逆転するのを防ぐ
     def timeout
         #binding.pry
+        # 反転
         begin
             if use_end_time.present? && use_start_time.present? && use_end_time < use_start_time
                 # if [use_end_time, use_start_time].compact.max == use_start_time
@@ -50,7 +52,13 @@ class Reservation < ApplicationRecord
     # seat_number < (予約席+今回の予約人数) =>error
     def seat_number
         if restaurant.seat_number.to_i < total_usage_number.to_i
-            errors.add(:seat_number, ": 予約できません#{self.usage_number},#{total_usage_number}")
+            errors.add(:seat_number, ": 予約できません")
+        end
+    end
+
+    def invalidtime
+        if restaurant.available_start_time > use_start_time && restaurant.available_end_time < use_end_time
+            errors.add(:use_start_time, :use_end_time, ": 利用時間外です")
         end
     end
 
