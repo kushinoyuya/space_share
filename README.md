@@ -1,6 +1,6 @@
 # Space Share
 
-![alt](https://user-images.githubusercontent.com/51279702/65826648-006b2500-e2c4-11e9-9ad6-3aa84920356c.png)
+![alt](https://user-images.githubusercontent.com/51279702/65826796-e6324680-e2c5-11e9-8ff5-26ee432995f5.png)
 
 
 お店の営業時間外にオーナー (店主)が店のスペースを貸し出すシステム
