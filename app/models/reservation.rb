@@ -57,8 +57,8 @@ class Reservation < ApplicationRecord
     end
 
     def invalidtime
-        if restaurant.available_start_time > use_start_time && restaurant.available_end_time < use_end_time
-            errors.add(:use_start_time, :use_end_time, ": 利用時間外です")
+        if restaurant.available_start_time > use_start_time || restaurant.available_end_time < use_end_time
+            errors.add(:use_start_time, ": 利用時間外です")
         end
     end
 
