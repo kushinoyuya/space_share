@@ -48,6 +48,7 @@ class Reservation < ApplicationRecord
 
     # seat_number < (予約席+今回の予約人数) =>error
     def seat_number
+        print total_usage_number
         if restaurant.seat_number.to_i < total_usage_number.to_i
             errors.add(:seat_number, ": 予約できません")
         end
