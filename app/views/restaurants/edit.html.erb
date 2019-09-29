@@ -1,0 +1,57 @@
+<%= render "layouts/setting" %>
+
+<div class="container-restaurant-edit">
+    <div class="row">
+        <section id="reservation-edit">
+            <div class="container">
+                <div class="row">
+                    <h2 class="my-profile-title text-center">予約変更</h2>
+                    <%= form_for @restaurant do |restaurant| %>
+                    <div class="col-sm-6 col-sm-offset-3">
+
+                        <%# 店舗名 %>
+                        <div class="row form-box">
+                            <label for="" class="text-center">■店舗名</label>
+                            <div class="form">
+                                <p style="color:#5f3ce3;"><strong><%= @restaurant.restaurant_name %></strong></p>
+                            </div>
+                        </div>
+
+                        <%# 予約日 %>
+                        <div class="row form-box">
+                            <label for="" class="text-center">■予約日</label>
+                            <div class="form">
+                                <%= restaurant.text_field :possible_day, id:'use_day', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+                            </div>
+                        </div>
+
+                        <%# 予約開始時刻 %>
+                        <div class="row form-box">
+                            <label for="" class="text-center">■予約開始時間</label>
+                            <div class="form">
+                                <%= restaurant.text_field :available_start_time, id:'use_start_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+                            </div>
+                        </div>
+
+                        <%# 予約終了時間 %>
+                        <div class="row form-box">
+                            <label for="" class="text-center">■予約終了時間</label>
+                            <div class="form">
+                                <%= restaurant.text_field :available_end_time, id:'use_end_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
+                            </div>
+                        </div>
+
+                        <div class="center-block btns">
+                            <p><%= restaurant.submit "予約変更",class:"btn btn-primary" %></p>
+                            <p><%= link_to "予約キャンセル",restaurant_path(@restaurant),method: :delete,class:"btn btn-danger" %></p>
+                        </div>
+
+
+                    </div><%# colsm-6 col-sm-offset-3 %>
+                    <% end %>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
