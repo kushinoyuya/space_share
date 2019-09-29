@@ -101,7 +101,7 @@
                                     <td><%= restaurant.available_start_time.strftime('%H時%M分') %>〜<%= restaurant.available_end_time.strftime('%H時%M分') %></td>
                                     <td><%= restaurant.seat_number %>席</td>
                                     <td><%= restaurant.restaurant_address %></td>
-                                    <td><div class="btn" ><%= link_to "店舗情報編集", edit_restaurant_path(restaurant), class: "btn btn-primary" %></div></td>
+                                    <%#= link_to "店舗情報編集", edit_restaurant_path(restaurant), class: "btn btn-primary" %>
                                 </tr>
                             </tbody>
                             <% end %>

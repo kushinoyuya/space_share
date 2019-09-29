@@ -15,9 +15,9 @@ class RestaurantsController < ApplicationController
         @restaurant.owner_id = current_owner.id
         if @restaurant.save
             redirect_to owner_path(current_owner)
-            flash[:notice] = "登録しました"
+            # flash[:notice] = "登録しました"
         else
-            flash.now[:alert] = "登録に失敗しました。 入力内容を確認してください。"
+            # flash.now[:alert] = "登録に失敗しました。 入力内容を確認してください。"
             @restaurant = Restaurant.new
             render :new
         end
@@ -26,11 +26,10 @@ class RestaurantsController < ApplicationController
     def update
         @restaurant = Restaurant.find(params[:id])
         if @restaurant.update(restaurant_params)
-            # デバック
-            binding.pry
-            redirect_to restaurants_path, flash[:notice] = "更新できました"
+            redirect_to restaurants_path
+            # flash[:notice] = "更新できました"
         else
-            flash.now[:alert] = "入力内容を確認してください"
+            # flash.now[:alert] = "入力内容を確認してください"
             render :new
         end
     end
