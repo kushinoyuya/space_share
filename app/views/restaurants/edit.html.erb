@@ -5,7 +5,7 @@
         <section id="reservation-edit">
             <div class="container">
                 <div class="row">
-                    <h2 class="my-profile-title text-center">予約変更</h2>
+                    <h2 class="my-profile-title text-center">登録情報変更</h2>
                     <%= form_for @restaurant do |restaurant| %>
                     <div class="col-sm-6 col-sm-offset-3">
 
@@ -19,7 +19,7 @@
 
                         <%# 予約日 %>
                         <div class="row form-box">
-                            <label for="" class="text-center">■予約日</label>
+                            <label for="" class="text-center">■利用可能日</label>
                             <div class="form">
                                 <%= restaurant.text_field :possible_day, id:'use_day', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
                             </div>
@@ -27,7 +27,7 @@
 
                         <%# 予約開始時刻 %>
                         <div class="row form-box">
-                            <label for="" class="text-center">■予約開始時間</label>
+                            <label for="" class="text-center">■利用可能開始時間</label>
                             <div class="form">
                                 <%= restaurant.text_field :available_start_time, id:'use_start_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
                             </div>
@@ -35,7 +35,7 @@
 
                         <%# 予約終了時間 %>
                         <div class="row form-box">
-                            <label for="" class="text-center">■予約終了時間</label>
+                            <label for="" class="text-center">■利用可能終了時間</label>
                             <div class="form">
                                 <%= restaurant.text_field :available_end_time, id:'use_end_time', class:"fieldset__input js__datepicker", placeholder:"Try me&hellip;" %></br></br>
                             </div>

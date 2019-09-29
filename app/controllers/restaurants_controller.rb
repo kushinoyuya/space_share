@@ -26,6 +26,8 @@ class RestaurantsController < ApplicationController
     def update
         @restaurant = Restaurant.find(params[:id])
         if @restaurant.update(restaurant_params)
+            # デバック
+            binding.pry
             redirect_to restaurants_path, flash[:notice] = "更新できました"
         else
             flash.now[:alert] = "入力内容を確認してください"
@@ -68,15 +70,6 @@ class RestaurantsController < ApplicationController
     def edit
         @restaurant = Restaurant.find(params[:id])
     end
-
-    # def map
-    #     results = Geocoder.search(params[:restaurant_address])
-    #     @latlng = results.first.coordinates
-    #     # これでmap.js.erbで、経度緯度情報が入った@latlngを使える。
-    #     respond_to do |format|
-    #         format.js
-    #     end
-    # end
 
     private
     def restaurant_params
