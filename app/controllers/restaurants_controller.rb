@@ -70,6 +70,15 @@ class RestaurantsController < ApplicationController
         @restaurant = Restaurant.find(params[:id])
     end
 
+    def destroy
+        owner = current_owner
+        restaurant = restaurant.find(params[:id])
+        restaurant.destroy
+        redirect_to owner_path(current_owner)
+    end
+
+
+
     private
     def restaurant_params
         params.require(:restaurant).permit(:owner_id, :restaurant_name, :restaurant_address, :facility, :possible_day, :scheduled_usage_fee, :rest_day, :available_start_time, :available_end_time, :prefecture, :seat_number, images: [])
