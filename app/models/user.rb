@@ -10,9 +10,9 @@ class User < ApplicationRecord
   # 名前 => 空欄だめ、1文字〜20文字以内で入力
   validates :first_name, presence: true, length: { in: 1..20 }
   # 苗字(カナ) => 空欄だめ、1文字〜20文字以内で入力
-  validates :last_kana, presence: true, length: { in: 1..20 }
+  validates :last_kana, presence: true, length: { in: 1..20 }, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。' }
   # 名前(カナ) => 空欄だめ、1文字〜20文字以内で入力
-  validates :first_kana, presence: true, length: { in: 1..20 }
+  validates :first_kana, presence: true, length: { in: 1..20 }, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。' }
   # 電話番号 => 空欄だめ、0から始まる10桁〜11桁で入力
   VALID_PHONE_REGEX = /\A0[0-9]{9,10}\z/
   validates :phone_number, presence: true, uniqueness: true, format: { with: VALID_PHONE_REGEX }
