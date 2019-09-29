@@ -86,10 +86,10 @@
                                 <tr>
                                     <th>店舗名</th>
                                     <th>設備</th>
-                                    <th>利用人数</th>
-                                    <th>利用時間</th>
-                                    <th>支払方法</th>
-                                    <th>電話番号</th>
+                                    <th>休日</th>
+                                    <th>利用可能時間</th>
+                                    <th>座席数</th>
+                                    <th>住所</th>
                                 </tr>
                             </thead>
                             <% @restaurants.each do |restaurant| %>
@@ -99,7 +99,7 @@
                                     <td><%= restaurant.facility %></td>
                                     <td><%= restaurant.rest_day.strftime('%m月%d日') %></td>
                                     <td><%= restaurant.available_start_time.strftime('%H時%M分') %>〜<%= restaurant.available_end_time.strftime('%H時%M分') %></td>
-                                    <td><%= restaurant.seat_number %></td>
+                                    <td><%= restaurant.seat_number %>席</td>
                                     <td><%= restaurant.restaurant_address %></td>
                                 </tr>
                             </tbody>
