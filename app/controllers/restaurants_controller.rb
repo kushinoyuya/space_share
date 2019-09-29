@@ -72,7 +72,7 @@ class RestaurantsController < ApplicationController
 
     def destroy
         owner = current_owner
-        restaurant = restaurant.find(params[:id])
+        restaurant = Restaurant.find(params[:id])
         restaurant.destroy
         redirect_to owner_path(current_owner)
     end
