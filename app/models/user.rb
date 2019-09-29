@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { in: 1..20 }
   # 苗字(カナ) => 空欄だめ、1文字〜20文字以内で入力
   validates :last_kana, presence: true, length: { in: 1..20 }, format: { with: VALID_KANA_REGEX }
-  VALID_KANA_REGEX = /\A[ァ-ヶー－]+\z/
+  VALID_KANA_REGEX = /[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+/
   # 名前(カナ) => 空欄だめ、1文字〜20文字以内で入力
   validates :first_kana, presence: true, length: { in: 1..20 }, format: { with: VALID_KANA_REGEX }
   # 電話番号 => 空欄だめ、0から始まる10桁〜11桁で入力
