@@ -38,4 +38,8 @@
 - Pay.jp（決済機能の導入）
 - Google Map API
 - Faker
-### 4. AWS（EC2、RDS、EIP）
+### 4. AWS
+- EC2
+- RDS
+- EIP
+- Route53
