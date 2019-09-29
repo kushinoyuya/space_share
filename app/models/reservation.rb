@@ -17,6 +17,8 @@ class Reservation < ApplicationRecord
     # バリデーション定義(自作の場合は単数)
     validate :timeout
     validate :dayout
+    validate :total_usage_number
+    validate :seat_number
     # validate :seat_number, :numericality => { :greater_than_or_equal_to => 0 }
 
     # 開始と終了の時間が逆転するのを防ぐ
