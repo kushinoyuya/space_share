@@ -47,7 +47,7 @@
 # ローカル環境での稼働手順
 - space_share/config/puma.rbファイルの「daemonize」をコメントアウトする
 - Daemonizeのプロセスを終了させる
-    * [$ lsof -i:3000]でrubyのポート番号を表示させる
-    * [$ kill -15 (ポート番号名)]でプロセスを終了させる
+    * [$ lsof -i:3000]でrubyのプロセス番号を表示させる
+    * [$ kill -15 (プロセス番号)]でプロセスを終了させる
 - [$ bundle install]を実行
 - [$ rails db:migrate]を実行
