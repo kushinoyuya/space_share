@@ -133,7 +133,6 @@
                     <%= f.text_area :comment,class:"form-control",placeholder:"レビューを入力（投稿は飲食店につき１件まで可能です。）" %>
                     <p></p>
                     <%# hidden_fieldで情報を渡す %>
-                    <%#= f.hidden_field :restaurant_id, :value => @restaurant.id %>
                     <%= f.submit("レビューする",class: 'btn btn-primary center-block ') %>
                 <% end %>
             </div>

@@ -3,8 +3,8 @@ FactoryBot.define do
       sequence(:email) { |n| "example#{n}@test.com" }
       sequence(:last_name) {|n| "last_name#{n}" }
       sequence(:first_name) {|n| "first_name#{n}" }
-      sequence(:last_kana) {|n| "last_kana#{n}" }
-      sequence(:first_kana) {|n| "first_kana#{n}" }
+      last_kana { "サンプル" }
+      first_kana { "タロウ" }
       phone_number { Faker::Base.regexify(/0[0-9]{9,10}/) }
       password { Faker::Internet.password }
       password_confirmation { password }
@@ -58,12 +58,10 @@ FactoryBot.define do
       trait :too_long_phone_number do
         phone_number {Faker::Lorem.characters(11)}
       end
-      # 0から始まるバリデーション
 
       trait :no_email do
         email {}
       end
-      # メールアドレス【***@***.***】の形で入力バリデーション
 
       trait :create_with_restaurants do
         after(:create) do |owner|

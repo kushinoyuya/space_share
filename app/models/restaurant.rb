@@ -4,7 +4,6 @@ class Restaurant < ApplicationRecord
     has_many :likes
     has_many :reviews
     has_many :reservations, dependent: :destroy
-    # optional: trueはFKキーをNILL値で返せる（class:nillエラー対策）
     belongs_to :owner
 
     # 画像ID（image_id）はActive_storageを使用
@@ -42,14 +41,5 @@ class Restaurant < ApplicationRecord
     鳥取県:30,島根県:31,岡山県:32,広島県:33,山口県:34,
     徳島県:35,香川県:36,愛媛県:37,高知県:38,
     福岡県:39,佐賀県:40,長崎県:41,熊本県:42,大分県:43,宮崎県:44,鹿児島県:45,沖縄県:46 }
-
-    # 定休日の選択
-    # enum rest_day: { 月:0,火:1,水:2,木:3,金:4,土:5,日:6 }
-
-
-    # いいね機能
-    # def favorited_by(user)
-    #     likes.where(user_id: user.id).exists?
-    # end
 
 end

@@ -29,16 +29,11 @@ root "root#top"
   end
   # 飲食店（空きスペース）
   resources :restaurants do
-      # Google Map実装
-      # get '/map_request', to: 'restaurants#map', as: 'map_request'
-      # レビュー機能
     resources :reviews
     get 'reservation_form' => 'reservations#new',as: 'reservations_form'
   end
   # オーナー
   resources :owners
-  # いいね機能（いらないかも）
-  # resources :likes
 
 
 

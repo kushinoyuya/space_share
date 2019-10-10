@@ -17,20 +17,14 @@ class Reservation < ApplicationRecord
     # バリデーション定義(自作の場合は単数)
     validate :timeout
     validate :dayout
-    # validate :total_usage_number
     validate :seat_number
-    # validate :seat_number, :numericality => { :greater_than_or_equal_to => 0 }
     validate :invalidtime
 
     # 開始と終了の時間が逆転するのを防ぐ
     def timeout
-        #binding.pry
-        # 反転
         begin
             if use_end_time.present? && use_start_time.present? && use_end_time < use_start_time
-                # if [use_end_time, use_start_time].compact.max == use_start_time
                 errors.add(:use_start_time, ": 正しい予約時間を入力してください")
-                # else
             end
         rescue NoMethodError
             errors.add(:use_start_time, ": 無効な値です")
@@ -46,7 +40,6 @@ class Reservation < ApplicationRecord
 
     def total_usage_number
         restaurant.reservations.where(usage_day: usage_day).sum(:usage_number).to_i + usage_number.to_i
-        # restaurant.reservations.where(usage_day: usage_day).inject(seat_number) { |sum, reservation| sum + reservation.seat_number }
     end
 
     # seat_number < (予約席+今回の予約人数) =>error

@@ -3,9 +3,8 @@ FactoryBot.define do
     sequence(:email) { |n| "example#{n}@test.com" }
     sequence(:last_name) {|n| "last_name#{n}" }
     sequence(:first_name) {|n| "first_name#{n}" }
-    sequence(:last_kana) {|n| "last_kana#{n}" }
-    sequence(:first_kana) {|n| "first_kana#{n}" }
-    # sequence(:phone_number) {|n| "phone_number#{n}" }
+    last_kana { "ヤマダ" }
+    first_kana { "タロウ" }
     phone_number { Faker::Base.regexify(/0[0-9]{9,10}/) }
     # email { Faker::Internet.email }
     password { Faker::Internet.password }

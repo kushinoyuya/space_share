@@ -6,7 +6,6 @@
         <h1 class="reservation-registration-title text-center">予約登録画面</h1>
         <%# エラーメッセージ表示 %>
         <%= render "layouts/error" ,model: @reservation %>
-        <%#= render "layouts/flash" %>
 
         <div class="col-sm-6 col-sm-offset-3">
             <%= form_with(model: @reservation, local:true) do |f| %>
@@ -17,14 +16,6 @@
                     <p style="color:#5f3ce3;"><strong><%= @restaurant.restaurant_name %></strong></p>
                 </div>
             </div>
-
-            <%# 利用日
-            <div class="row form-box">
-                <label for="" class="text-center">■利用日</label>
-                <div class="form">
-
-                </div>
-            </div> %>
 
             <%# 予約日 %>
             <div class="row form-box">

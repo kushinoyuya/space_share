@@ -32,10 +32,6 @@ RSpec.describe Reservation, "モデルに関するテスト", type: :model do
           expect(FactoryBot.build(:reservation, :no_use_start_time)).to_not be_valid
         end
 
-        # it "if use_end_time < use_start_time"
-        #   expect().to_not be_valid
-        # end
-
         it "use_end_time => 空欄" do
           expect(FactoryBot.build(:reservation, :no_use_end_time)).to_not be_valid
         end
