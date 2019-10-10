@@ -29,9 +29,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        # @like = Like.find(params[:id])
         @user = User.find(params[:id])
-        # @likes = @user.likes
         @reservations = @user.reservations
     end
 

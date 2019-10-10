@@ -5,20 +5,10 @@ class ReservationsController < ApplicationController
     def new
         @reservation = Reservation.new
         @reservation.user_id = current_user.id
-        # ルーティングを調整
         @restaurant = Restaurant.find(params[:restaurant_id])
-        # render :new
-        # いらない
-        # set_form_values
     end
 
     def create
-        # binding.pry
-        # reservation_paramsが空の値があればリダイレクト
-        # if @reservation.blank?
-        #     redirect_to new_reservation_path(@reservation)
-        #     flash.now[:alert] = "未入力の情報があります。もう一度確認してください。"
-        # end
         @reservation = Reservation.new(reservation_params)
         @reservation.user_id = current_user.id
         @restaurant = @reservation.restaurant
@@ -37,7 +27,6 @@ class ReservationsController < ApplicationController
     end
 
     def index
-        # @reservations = Reservation.all
     end
 
     def destroy
