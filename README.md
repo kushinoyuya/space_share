@@ -23,9 +23,9 @@
 
 # 利用技術
 ### 1. 言語
-- Ruby  
+- Ruby 2.5.5
 ### 2. フレームワーク
-- Ruby On Rails
+- Ruby On Rails 5.2.3
 ### 3. テスト
 - Rspec
 ### 4. パッケージ
@@ -43,3 +43,11 @@
 - RDS
 - EIP
 - Route53
+
+# ローカル環境での稼働手順
+- space_share/config/puma.rbファイルの「daemonize」をコメントアウトする
+- Daemonizeのプロセスを終了させる
+    * [$ lsof -i:3000]でrubyのポート番号を表示させる
+    * [$ kill -15 (ポート番号名)]でプロセスを終了させる
+- [$ bundle install]を実行
+- [$ rails db:migrate]を実行

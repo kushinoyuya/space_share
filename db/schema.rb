@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2019_09_16_111446) do
   end
 
   create_table "owners", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -51,11 +51,11 @@ ActiveRecord::Schema.define(version: 2019_09_16_111446) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "last_name", default: "", null: false
-    t.string "first_name", default: "", null: false
-    t.string "last_kana", default: "", null: false
-    t.string "first_kana", default: "", null: false
-    t.string "phone_number", default: "", null: false
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_kana", null: false
+    t.string "first_kana", null: false
+    t.string "phone_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_owners_on_email", unique: true
@@ -66,12 +66,12 @@ ActiveRecord::Schema.define(version: 2019_09_16_111446) do
     t.integer "user_id", null: false
     t.integer "restaurant_id", null: false
     t.integer "payment", null: false
-    t.string "restaurant_status", default: "", null: false
-    t.string "usage_fee", default: "", null: false
-    t.string "usage_status", default: "", null: false
+    t.string "restaurant_status", null: false
+    t.string "usage_fee", default: "2000", null: false
+    t.string "usage_status", default: "1", null: false
     t.datetime "use_start_time", null: false
     t.datetime "use_end_time", null: false
-    t.string "usage_number", default: "", null: false
+    t.string "usage_number", null: false
     t.datetime "usage_day", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -80,13 +80,13 @@ ActiveRecord::Schema.define(version: 2019_09_16_111446) do
   create_table "restaurants", force: :cascade do |t|
     t.integer "owner_id", null: false
     t.integer "prefecture", null: false
-    t.string "restaurant_name", default: "", null: false
-    t.string "restaurant_address", default: "", null: false
-    t.string "facility", default: "", null: false
-    t.string "scheduled_usage_fee", default: "", null: false
+    t.string "restaurant_name", null: false
+    t.string "restaurant_address", null: false
+    t.string "facility", null: false
+    t.string "scheduled_usage_fee", null: false
     t.datetime "available_start_time", null: false
     t.datetime "available_end_time", null: false
-    t.string "seat_number", default: "", null: false
+    t.string "seat_number", null: false
     t.datetime "rest_day", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,8 +103,8 @@ ActiveRecord::Schema.define(version: 2019_09_16_111446) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -113,11 +113,11 @@ ActiveRecord::Schema.define(version: 2019_09_16_111446) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "last_name", default: "", null: false
-    t.string "first_name", default: "", null: false
-    t.string "last_kana", default: "", null: false
-    t.string "first_kana", default: "", null: false
-    t.string "phone_number", default: "", null: false
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_kana", null: false
+    t.string "first_kana", null: false
+    t.string "phone_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

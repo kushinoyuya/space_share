@@ -1,6 +1,6 @@
 class CreateRestaurants < ActiveRecord::Migration[5.2]
   def change
-    create_table :restaurants, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
+    create_table :restaurants do |t|
 
       t.integer :owner_id, null: false
       t.integer :prefecture, null: false
